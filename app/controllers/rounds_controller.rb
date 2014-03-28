@@ -1,20 +1,22 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :edit, :update, :destroy]
+  before_filter :load_parent
 
   # GET /rounds
   # GET /rounds.json
   def index
-    @rounds = Round.all
+    @rounds = @tourney.rounds.all
   end
 
   # GET /rounds/1
   # GET /rounds/1.json
   def show
+    # @round = Round.find(params[:round])
   end
 
   # GET /rounds/new
   def new
-    @round = Round.new
+    @round = @tourney.rounds.new
   end
 
   # GET /rounds/1/edit
@@ -24,11 +26,11 @@ class RoundsController < ApplicationController
   # POST /rounds
   # POST /rounds.json
   def create
-    @round = Round.new(round_params)
+    @round = @tourney.rounds.new(round_params)
 
     respond_to do |format|
       if @round.save
-        format.html { redirect_to @round, notice: 'Round was successfully created.' }
+        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully created.' }
         format.json { render action: 'show', status: :created, location: @round }
       else
         format.html { render action: 'new' }
@@ -41,8 +43,8 @@ class RoundsController < ApplicationController
   # PATCH/PUT /rounds/1.json
   def update
     respond_to do |format|
-      if @round.update(round_params)
-        format.html { redirect_to @round, notice: 'Round was successfully updated.' }
+      if @tourney.round.update(round_params)
+        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +56,11 @@ class RoundsController < ApplicationController
   # DELETE /rounds/1
   # DELETE /rounds/1.json
   def destroy
+    @round = @tourney.rounds.find(params[:id])
     @round.destroy
+
     respond_to do |format|
-      format.html { redirect_to rounds_url }
+      format.html { redirect_to tourney_rounds_path(@tourney) }
       format.json { head :no_content }
     end
   end
@@ -70,5 +74,10 @@ class RoundsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
       params.require(:round).permit(:order, :tourney_id)
+    end
+
+    
+    def load_parent
+      @tourney = Tourney.find(params[:tourney_id]) 
     end
 end
