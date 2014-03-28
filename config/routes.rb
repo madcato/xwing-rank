@@ -1,8 +1,10 @@
 XwingRank::Application.routes.draw do
-  resources :rounds
+  
 
-  resources :tourneys
-
+  resources :tourneys do
+    resources :rounds
+  end
+  
   resources :players
 
   # The priority is based upon order of creation: first created -> highest priority.

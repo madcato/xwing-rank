@@ -37,3 +37,7 @@ Entities:
 	numberMatches:
 	ranking:
 
+
+
+# Great link for doing nested resources
+https://gist.github.com/jhjguxin/3074080
