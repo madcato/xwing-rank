@@ -1,0 +1,74 @@
+--- PLAYERS
+MINERVA	MONTESDEOCA	ZARAGOZA		0	active
+JUAN	IBAÑEZ	ZARAGOZA		0	active
+DANIEL	LABORDA			0	active
+Gabriel	Bueno	Zaragoza		0	active
+Jacobo	Alonso			0	active
+Miguel	Tomas	Zaragoza		0	active
+Nacho	Buey	Zaragoza		0	active
+PEDRO	PEREZ	ZARAGOZA		0	active
+VICTOR	PASAMAR	ZARAGOZA		0	active
+Daniel	Vela	Zaragoza		0	active
+ALBERTO	PONCELA	ZARAGOZA		0	active
+Alberto	Aparicio	Zaragoza		0	active
+
+--- ROUND 1
+MINERVA	MONTESDEOCA	0
+DANIEL	LABORDA	5
+-
+Alberto	Aparicio	0
+Miguel	Tomas	3
+-
+Daniel	Vela	5
+Nacho	Buey	0
+-
+Jacobo	Alonso	5
+ALBERTO	PONCELA	0
+-
+Gabriel	Bueno	0
+JUAN	IBAÑEZ	5
+-
+VICTOR	PASAMAR	0
+PEDRO	PEREZ	3
+-
+
+--- ROUND 2
+Daniel	Vela	3
+DANIEL	LABORDA	0
+-
+JUAN	IBAÑEZ	0
+Jacobo	Alonso	5
+-
+PEDRO	PEREZ	0
+Miguel	Tomas	5
+-
+Alberto	Aparicio	3
+MINERVA	MONTESDEOCA	0
+-
+Gabriel	Bueno	0
+VICTOR	PASAMAR	3
+-
+Nacho	Buey	5
+ALBERTO	PONCELA	0
+-
+
+--- ROUND 3
+Jacobo	Alonso	3
+Daniel	Vela	0
+-
+Nacho	Buey	3
+JUAN	IBAÑEZ	0
+-
+Miguel	Tomas	3
+DANIEL	LABORDA	0
+-
+Alberto	Aparicio	3
+PEDRO	PEREZ	0
+-
+ALBERTO	PONCELA	3
+Gabriel	Bueno	0
+-
+MINERVA	MONTESDEOCA	0
+VICTOR	PASAMAR	5
+-
+
