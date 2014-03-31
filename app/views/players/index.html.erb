@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Uniqueid</th>
       <th>Numberofmatches</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
+        <td><%= player.id %></td>
         <td><%= player.name %></td>
         <td><%= player.uniqueid %></td>
         <td><%= player.numberOfMatches %></td>

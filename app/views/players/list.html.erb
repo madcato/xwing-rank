@@ -1,0 +1,27 @@
+<h1>X-Wing Zaragoza</h1>
+<h2>Listing players</h2>
+<% position = 1 %>
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Name</th>
+      <th>Uniqueid</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= position %></td>
+        <td><%= player.name %></td>
+        <td><%= player.uniqueid %></td>
+        <td><%= player.ranking %></td>
+      </tr>
+    <% position += 1 %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

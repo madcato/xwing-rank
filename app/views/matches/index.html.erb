@@ -17,7 +17,9 @@
   <thead>
     <tr>
       <th>Player1</th>
+      <th>Name</th>
       <th>Player2</th>
+      <th>Name</th>
       <th>Winner</th>
       <th>Round</th>
       <th></th>
@@ -30,7 +32,9 @@
     <% @matches.each do |match| %>
       <tr>
         <td><%= match.player1_id %></td>
+        <td><%= match.player1.name %></td>
         <td><%= match.player2_id %></td>
+        <td><%= match.player2.name %></td>
         <td><%= match.winner %></td>
         <td><%= match.round_id %></td>
         <td><%= link_to 'Show', tourney_round_match_path(@tourney, @round, match) %></td>
