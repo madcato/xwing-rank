@@ -1,6 +1,8 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
   before_filter :load_parents
+  before_filter :digest_authenticate  
+ 
 
   # GET /matches
   # GET /matches.json

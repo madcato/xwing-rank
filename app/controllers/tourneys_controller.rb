@@ -1,6 +1,7 @@
 class TourneysController < ApplicationController
   before_action :set_tourney, only: [:show, :edit, :update, :destroy]
-
+  before_filter :digest_authenticate, :except => ['create']  
+ 
   # GET /tourneys
   # GET /tourneys.json
   def index

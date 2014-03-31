@@ -1,6 +1,8 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :edit, :update, :destroy]
   before_filter :load_parent
+  before_filter :digest_authenticate
+ 
 
   # GET /rounds
   # GET /rounds.json
