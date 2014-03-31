@@ -34,7 +34,6 @@ Entities:
 - Player
 	name:
 	uniqueid: optional, but recommended
-	numberMatches:
 	ranking:
 
 

@@ -25,7 +25,8 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
-
+    @player.ranking = 1400 # All new players starts with ranking 1400
+    
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Player was successfully created.' }

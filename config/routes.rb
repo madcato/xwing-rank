@@ -1,8 +1,9 @@
 XwingRank::Application.routes.draw do
   
-
   resources :tourneys do
-    resources :rounds
+    resources :rounds do
+      resources :matches
+    end
   end
   
   resources :players
