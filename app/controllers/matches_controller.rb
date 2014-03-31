@@ -57,10 +57,10 @@ class MatchesController < ApplicationController
   # DELETE /matches/1
   # DELETE /matches/1.json
   def destroy
-    @match = @round.matches.find(parmas[:id])
+    @match = @round.matches.find(params[:id])
     @match.destroy
     respond_to do |format|
-      format.html { redirect_to matches_url }
+      format.html { redirect_to tourney_round_matches_path(@tourney, @round) }
       format.json { head :no_content }
     end
   end
