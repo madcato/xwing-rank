@@ -6,7 +6,7 @@ App for calculating xwing ranking based in ELO system
 
 ## ELO Ranking system
 
-This information was extracted from !(Wikipedia)[http://en.wikipedia.org/wiki/Elo_rating_system
+This information was extracted from  Wikipedia: http://en.wikipedia.org/wiki/Elo_rating_system
 
 Ea = 1 / (1 + 10 ^ ((Rb - Ra) / 400))
 Eb = 1 / (1 + 10 ^ ((Rc - Rb) / 400))
@@ -38,5 +38,5 @@ Entities:
 
 
 
-# Great link for doing nested resources
+## Great link for doing nested resources
 https://gist.github.com/jhjguxin/3074080
