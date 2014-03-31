@@ -42,8 +42,10 @@ class RoundsController < ApplicationController
   # PATCH/PUT /rounds/1
   # PATCH/PUT /rounds/1.json
   def update
+    @round = @tourney.rounds.find(params[:id])
+
     respond_to do |format|
-      if @tourney.round.update(round_params)
+      if @round.update(round_params)
         format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
         format.json { head :no_content }
       else

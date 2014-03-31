@@ -16,7 +16,7 @@
       <tr>
         <td><%= tourney.state %></td>
         <td><%= tourney.titulo %></td>
-        <td><%= link_to 'Show', tourney %></td>
+        <td><%= link_to 'Show', tourney_rounds_path(tourney) %></td>
         <td><%= link_to 'Edit', edit_tourney_path(tourney) %></td>
         <td><%= link_to 'Destroy', tourney, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
