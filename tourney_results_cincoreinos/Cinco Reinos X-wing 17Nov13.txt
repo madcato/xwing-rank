@@ -1,0 +1,68 @@
+--- PLAYERS
+Daniel	Vela	Zaragoza		0	active
+Nacho	Buey	Zaragoza		0	active
+Nacho	Paracuellos	Zaragoza		0	active
+Diego	Ramos	Zgz		0	active
+Carlos	Moros	Zgz		0	active
+Luis	Egido	Zgz		0	active
+Jesus	Sanchez	Zgz		0	active
+Antonio	Mesa	Zgz		0	active
+Miguel Angel	Fece	Zgz		0	active
+Gabriel	Bueno	Zaragoza		0	active
+Miguel	Tomas	Zaragoza		0	active
+
+--- ROUND 1
+Gabriel	Bueno	0
+Miguel Angel	Fece	3
+-
+Nacho	Buey	3
+Luis	Egido	0
+-
+Nacho	Paracuellos	0
+Carlos	Moros	3
+-
+Diego	Ramos	0
+Miguel	Tomas	3
+-
+Antonio	Mesa	3
+Daniel	Vela	0
+-
+Jesus	Sanchez	3
+-
+
+--- ROUND 2
+Nacho	Buey	0
+Carlos	Moros	3
+-
+Miguel Angel	Fece	3
+Jesus	Sanchez	0
+-
+Antonio	Mesa	0
+Miguel	Tomas	3
+-
+Daniel	Vela	3
+Nacho	Paracuellos	0
+-
+Luis	Egido	0
+Diego	Ramos	3
+-
+-
+
+--- ROUND 3
+Miguel Angel	Fece	0
+Carlos	Moros	3
+-
+Miguel	Tomas	0
+Nacho	Buey	3
+-
+Antonio	Mesa	0
+Jesus	Sanchez	3
+-
+Diego	Ramos	3
+Daniel	Vela	0
+-
+Nacho	Paracuellos	3
+Luis	Egido	0
+-
+-
+
