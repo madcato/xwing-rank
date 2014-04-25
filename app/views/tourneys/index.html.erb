@@ -1,6 +1,6 @@
 <h1>Listing tourneys</h1>
-
-<table>
+<%= link_to 'New Tourney', new_tourney_path, class: "btn btn-primary btn-lg", role:"button" %>
+<table class="table">
   <thead>
     <tr>
       <th>State</th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= tourney.state %></td>
         <td><%= tourney.titulo %></td>
-        <td><%= link_to 'Show', tourney_rounds_path(tourney) %></td>
-        <td><%= link_to 'Edit', edit_tourney_path(tourney) %></td>
-        <td><%= link_to 'Destroy', tourney, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', tourney_rounds_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Edit', edit_tourney_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Destroy', tourney, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Tourney', new_tourney_path %>
+<%= link_to 'New Tourney', new_tourney_path, class: "btn btn-primary btn-lg", role:"button" %>

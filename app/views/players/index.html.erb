@@ -1,12 +1,12 @@
 <h1>Listing players</h1>
 
-<table>
+<%= link_to 'New Player', new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
+
+<table class="table">
   <thead>
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Uniqueid</th>
-      <th>Numberofmatches</th>
       <th>Ranking</th>
       <th></th>
       <th></th>
@@ -19,12 +19,10 @@
       <tr>
         <td><%= player.id %></td>
         <td><%= player.name %></td>
-        <td><%= player.uniqueid %></td>
-        <td><%= player.numberOfMatches %></td>
         <td><%= player.ranking %></td>
-        <td><%= link_to 'Show', player %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', player, class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Edit', edit_player_path(player), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Player', new_player_path %>
+<%= link_to 'New Player', new_player_path, class: "btn btn-primary btn-lg", role:"button" %>

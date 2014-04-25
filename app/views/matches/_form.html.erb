@@ -1,4 +1,4 @@
-<%= form_for([@tourney, @round, @match]) do |f| %>
+<%= form_for([@tourney, @round, @match], role: "form") do |f| %>
   <% if @match.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
@@ -11,24 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="from_group">
     <%= f.label :player1_id %><br>
-    <%= f.number_field :player1_id %>
+    <%= f.number_field :player1_id, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form_group">
     <%= f.label :player2_id %><br>
-    <%= f.number_field :player2_id %>
+    <%= f.number_field :player2_id, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form_group">
     <%= f.label :winner %><br>
-    <%= f.number_field :winner %>
+    <%= f.number_field :winner, class: "form-control" %>
     <p>Set 0 if draw, 1 if player 1 was winner or 2 if player 2 was winner</p>
   </div>
-  <div class="field">
+  <div class="form_group">
     <%= f.label :round_id %><br>
-    <%= f.number_field :round_id %>
+    <%= f.number_field :round_id, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "btn btn-default" %>
 <% end %>

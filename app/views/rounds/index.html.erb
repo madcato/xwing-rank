@@ -15,7 +15,8 @@
 <%= link_to 'Edit', edit_tourney_path(@tourney) %> |
 <%= link_to 'Back', tourneys_path %>
 
-<table>
+
+<table class="table">
   <thead>
     <tr>
       <th>Order</th>
@@ -31,9 +32,9 @@
       <tr>
         <td><%= round.order %></td>
         <td><%= round.tourney_id %></td>
-        <td><%= link_to 'Show', tourney_round_matches_path(@tourney, round) %></td>
-        <td><%= link_to 'Edit', edit_tourney_round_path(@tourney, round) %></td>
-        <td><%= link_to 'Destroy', [@tourney, round], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', tourney_round_matches_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Edit', edit_tourney_round_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to 'Destroy', [@tourney, round], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Round', new_tourney_round_path(@tourney) %>
+<%= link_to 'New Round', new_tourney_round_path(@tourney), class: "btn btn-primary btn-lg", role:"button" %>

@@ -1,4 +1,4 @@
-<%= form_for(@tourney) do |f| %>
+<%= form_for(@tourney, role: "form") do |f| %>
   <% if @tourney.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tourney.errors.count, "error") %> prohibited this tourney from being saved:</h2>
@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form_group">
     <%= f.label :state %><br>
-    <%= f.number_field :state %>
+    <%= f.number_field :state, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form_group">
     <%= f.label :titulo %><br>
-    <%= f.text_field :titulo %>
+    <%= f.text_field :titulo, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "btn btn-default" %>
 <% end %>

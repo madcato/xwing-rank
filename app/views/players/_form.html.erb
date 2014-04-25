@@ -1,4 +1,4 @@
-<%= form_for(@player) do |f| %>
+<%= form_for(@player, role: "form") do |f| %>
   <% if @player.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
@@ -11,23 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :uniqueid %><br>
-    <%= f.text_field :uniqueid %>
+    <%= f.text_field :uniqueid, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :numberOfMatches %><br>
-    <%= f.number_field :numberOfMatches %>
+    <%= f.number_field :numberOfMatches, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :ranking %><br>
-    <%= f.number_field :ranking %>
+    <%= f.number_field :ranking, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "btn btn-default" %>
 <% end %>
