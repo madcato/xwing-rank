@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
-  before_filter :digest_authenticate
+  before_filter :digest_authenticate, except: :list
  
   # GET /players
   # GET /players.json
