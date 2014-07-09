@@ -31,7 +31,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.save
-        format.html { redirect_to [@tourney, @round, @match], notice: 'Match was successfully created.' }
+        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: 'Match was successfully created.' }
         format.json { render action: 'show', status: :created, location: @match }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to [@tourney, @rounds], notice: 'Match was successfully updated.' }
+        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: 'Match was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
