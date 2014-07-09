@@ -1,0 +1,63 @@
+--- PLAYERS
+Carlos	Moros	Zaragoza		0	active
+Victor	Pasamar	Zaragoza		0	active
+Esteban	Frac	Zaragoza		0	active
+Daniel	Laborda	Zaragoza		0	active
+Javier	Bacarizo	Zaragoza		0	active
+Jacobo	Alonso			0	active
+Diego	Sanz	Zaragoza		0	active
+Jose	Hernandez	Zaragoza		0	active
+Juan	Iba–ez	Zaragoza		0	active
+Marta	Gonzalo	Zaragoza		0	active
+
+--- ROUND 1
+Juan	Iba–ez	0
+Victor	Pasamar	5
+-
+Javier	Bacarizo	0
+Daniel	Laborda	5
+-
+Esteban	Frac	5
+Jose	Hernandez	0
+-
+Carlos	Moros	5
+Marta	Gonzalo	0
+-
+Jacobo	Alonso	5
+Diego	Sanz	0
+-
+
+--- ROUND 2
+Jacobo	Alonso	0
+Carlos	Moros	5
+-
+Esteban	Frac	0
+Victor	Pasamar	5
+-
+Juan	Iba–ez	3
+Daniel	Laborda	0
+-
+Jose	Hernandez	0
+Diego	Sanz	5
+-
+Marta	Gonzalo	0
+Javier	Bacarizo	5
+-
+
+--- ROUND 3
+Carlos	Moros	5
+Victor	Pasamar	0
+-
+Esteban	Frac	5
+Diego	Sanz	0
+-
+Jacobo	Alonso	0
+Daniel	Laborda	5
+-
+Javier	Bacarizo	5
+Juan	Iba–ez	0
+-
+Marta	Gonzalo	0
+Jose	Hernandez	5
+-
+
