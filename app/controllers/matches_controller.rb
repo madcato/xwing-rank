@@ -43,7 +43,7 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
   def update
-    @math = @round.mathes.find(params[:id])
+    @math = @round.matches.find(params[:id])
 
     respond_to do |format|
       if @match.update(match_params)
