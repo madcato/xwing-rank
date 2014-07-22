@@ -43,3 +43,5 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+gem 'rails_admin'
