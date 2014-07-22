@@ -1,5 +1,7 @@
 XwingRank::Application.routes.draw do
   
+  resources :players_tourneys
+
   devise_for :users
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
