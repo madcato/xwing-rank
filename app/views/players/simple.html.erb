@@ -1,0 +1,7 @@
+<%= simple_form_for @player do |f| %>
+  <%= f.input :name, label: 'Your username please' %>
+  <%= f.input :uniqueid, hint: 'No special characters.' %>
+  <%= f.input :numberOfMatches, placeholder: '0' %>
+  <%= f.input :ranking, inline_label: 'Ranking inicial del usuario' %>
+  <%= f.button :submit %>
+<% end %>
