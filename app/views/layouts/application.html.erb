@@ -53,8 +53,12 @@
       </div>
     </div>
     <div class="container">
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+		<% if !notice.nil? %>
+			  <div class="alert alert-info"><%= notice %></div>
+		<% end %>
+		<% if !alert.nil? %>
+			  <div class="alert alert-danger"><%= alert %></div>
+		<% end %>
 	<%= yield %>
     </div><!-- /.container -->
   </body>
