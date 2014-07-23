@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
-  before_action :set_round, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_filter :load_parent
- 
+  before_action :set_round, only: [:show, :edit, :update, :destroy]
 
   # GET /rounds
   # GET /rounds.json
@@ -71,7 +71,7 @@ class RoundsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
-      @round = Round.find(params[:id])
+      @round = @tourney.rounds.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -81,6 +81,6 @@ class RoundsController < ApplicationController
 
     
     def load_parent
-      @tourney = Tourney.find(params[:tourney_id]) 
+      @tourney = current_user.tourneys.find(params[:tourney_id]) 
     end
 end

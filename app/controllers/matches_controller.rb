@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_filter :load_parents
- 
+  before_action :set_match, only: [:show, :edit, :update, :destroy]
 
   # GET /matches
   # GET /matches.json
@@ -78,7 +78,7 @@ class MatchesController < ApplicationController
     end
 
     def load_parents
-      @tourney = Tourney.find(params[:tourney_id]) 
+      @tourney = current_user.tourneys.find(params[:tourney_id]) 
       @round = @tourney.rounds.find(params[:round_id])
     end
 end

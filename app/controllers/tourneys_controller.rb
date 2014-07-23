@@ -1,11 +1,11 @@
 class TourneysController < ApplicationController
-  before_action :set_tourney, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_tourney, only: [:show, :edit, :update, :destroy]
   
   # GET /tourneys
   # GET /tourneys.json
   def index
-    @tourneys = current_user.tourneys
+    @tourneys = current_user.tourneys.all
   end
 
   # GET /tourneys/1

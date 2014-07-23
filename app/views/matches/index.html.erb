@@ -1,18 +1,10 @@
 <h1>Listing matches</h1>
 
-<p>
-  <strong>Order:</strong>
-  <%= @round.order %>
-</p>
-
-<p>
-	<strong><%= link_to 'Tourney:', tourney_rounds_path(@tourney) %></strong>
-  <%= @round.tourney_id %>
-</p>
+<%= render 'tourneys/info' %>
 
 <p>
   <strong>Round:</strong>
-  <%= @round.id %>
+  <%= @round.order %>
 </p>
 
 

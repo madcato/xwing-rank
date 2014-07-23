@@ -2,15 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>State:</strong>
-  <%= @tourney.state %>
-</p>
-
-<p>
-  <strong>Titulo:</strong>
-  <%= @tourney.titulo %>
-</p>
+<%= render 'tourneys/info' %>
 
 <%= link_to 'Edit', edit_tourney_path(@tourney) %> |
 <%= link_to 'Back', tourneys_path %>
@@ -20,7 +12,6 @@
   <thead>
     <tr>
       <th>Order</th>
-      <th>Tourney</th>
       <th></th>
       <th></th>
       <th></th>
@@ -31,7 +22,6 @@
     <% @rounds.each do |round| %>
       <tr>
         <td><%= round.order %></td>
-        <td><%= round.tourney_id %></td>
         <td><%= link_to 'Show', tourney_round_matches_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Edit', edit_tourney_round_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Destroy', [@tourney, round], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
