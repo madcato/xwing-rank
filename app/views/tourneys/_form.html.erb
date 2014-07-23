@@ -13,7 +13,7 @@
 
   <div class="form_group">
     <%= f.label :state %><br>
-    <%= f.number_field :state, class: "form-control" %>
+	<%= select("tourney", "state", collectTournamentStates(), class: "form-control") %>
   </div>
   <div class="form_group">
     <%= f.label :titulo %><br>

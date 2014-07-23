@@ -1,10 +1,11 @@
 class TourneysController < ApplicationController
   before_action :set_tourney, only: [:show, :edit, :update, :destroy]
- 
+  before_action :authenticate_user!
+  
   # GET /tourneys
   # GET /tourneys.json
   def index
-    @tourneys = Tourney.all
+    @tourneys = current_user.tourneys
   end
 
   # GET /tourneys/1
@@ -14,7 +15,7 @@ class TourneysController < ApplicationController
 
   # GET /tourneys/new
   def new
-    @tourney = Tourney.new
+    @tourney = current_user.tourneys.new
   end
 
   # GET /tourneys/1/edit
@@ -24,7 +25,7 @@ class TourneysController < ApplicationController
   # POST /tourneys
   # POST /tourneys.json
   def create
-    @tourney = Tourney.new(tourney_params)
+    @tourney = current_user.tourneys.new(tourney_params)
 
     respond_to do |format|
       if @tourney.save
@@ -64,7 +65,7 @@ class TourneysController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tourney
-      @tourney = Tourney.find(params[:id])
+      @tourney = current_user.tourneys.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
