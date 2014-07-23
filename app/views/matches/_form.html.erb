@@ -17,20 +17,20 @@
   </div>
   <div class="form_group">
     <%= f.label :player2_id %><br>
-	<%= select("match", "player2_id", Player.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class: "form-control") %>
+	<%= select("match", "player2_id", collectPlayersForTournmanet(@tourney), {include_blank: 'None'}, class: "form-control") %>
   </div>
   <div class="form_group">
-    <%= f.label :winner %>
-	<input id="match_winner_id_1" name="match[winner]" type="radio" value="1" class="form-control" />
-	<label for="match_winner_id_1">Player 1</label>
-	<input id="match_winner_id_2" name="match[winner]" type="radio" value="2" class="form-control"/>
-	<label for="match_winner_id_2">Player2</label>
-
+    <%= f.label :points1 %><br>
+	<%= select("match", "points1", collectResults(), {include_blank: 'None'}, class: "form-control") %>
   </div>
   <div class="form_group">
+    <%= f.label :points2 %><br>
+	<%= select("match", "points2", collectResults(), {include_blank: 'None'}, class: "form-control") %>
+  </div>
   
-    <%= f.hidden_field :round_id, class: "form-control" %>
-  </div>
+  
+  <%= f.hidden_field :round_id, class: "form-control" %>
+  
   <%= f.submit class: "btn btn-default" %>
 <% end %>
 	

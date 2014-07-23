@@ -1,6 +1,7 @@
 class PlayersTourneysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_players_tourney, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /players_tourneys
   # GET /players_tourneys.json
   def index

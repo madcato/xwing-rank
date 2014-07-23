@@ -7,6 +7,7 @@ XwingRank::Application.routes.draw do
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tourneys do
+    get 'removePlayer/:player_id' => 'rounds#removePlayer'
     resources :rounds do
       resources :matches
     end
@@ -14,6 +15,7 @@ XwingRank::Application.routes.draw do
   
   resources :players
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -68,6 +68,15 @@ class RoundsController < ApplicationController
     end
   end
 
+  #GET 
+  def removePlayer
+    @tourney.players.delete(params[:player_id])
+    respond_to do |format|
+      format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was removed from tourney.' }
+      format.json { head :no_content }
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round

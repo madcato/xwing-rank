@@ -1,8 +1,31 @@
-<h1>Listing rounds</h1>
+
+<h1>Tournament</h1>
 
 <p id="notice"><%= notice %></p>
 
 <%= render 'tourneys/info' %>
+<h2>Listing inscribed players</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tourney.players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= link_to 'Remove', "/tourneys/#{@tourney.id}/removePlayer/#{player.id}",  data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Listing rounds</h2>
 
 <%= link_to 'Edit', edit_tourney_path(@tourney) %> |
 <%= link_to 'Back', tourneys_path %>

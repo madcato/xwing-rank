@@ -1,6 +1,7 @@
 module TourneysHelper
   
   def collectTournamentStates
-    return Tourney.states
+    i = -1;
+    Tourney.states.collect {|p| [ p, i += 1 ] }
   end
 end

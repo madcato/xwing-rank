@@ -4,11 +4,10 @@ class Tourney < ActiveRecord::Base
   belongs_to :user
   
   def self.states
-    [['new', 0], ['published',1], ['initiated',2], ['finished',3]]
+    ['new', 'published', 'initiated', 'finished']
   end
   
   def stateName
-    vec = Tourney.states[self.state]
-    return vec[0]
+    Tourney.states[self.state]
   end
 end
