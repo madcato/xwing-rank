@@ -1,0 +1,29 @@
+
+<%= render 'tourneys/info' %>
+
+<h1>New inscription</h1>
+
+<%= form_for("inscription", url: "/tourneys/#{@tourney.id}/createInscription", role: "form") do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="from_group">
+    <%= f.label :player %><br>
+	<%= select("player", "id", collectPlayersForAllTournmanets, {include_blank: 'None'}, class: "form-control") %>
+  </div>  
+  
+  
+  
+  <%= f.submit class: "btn btn-default" %>
+<% end %>
+
+<%= link_to 'Back', tourney_rounds_path(@tourney) %>

@@ -67,13 +67,33 @@ class RoundsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   #GET 
   def removePlayer
     @tourney.players.delete(params[:player_id])
     respond_to do |format|
       format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was removed from tourney.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def newPlayer
+    @player = @tourney.players.new
+  end
+  
+  def createInscription
+    
+    @tourney.players << Player.find(params[:player][:id])
+    
+
+    respond_to do |format|
+      if @tourney.save
+        format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was successfully isncribed.' }
+        format.json { render action: 'show', status: :created, location: @tourney }
+      else
+        format.html { render action: 'newPlayer' }
+        format.json { render json: @round.errors, status: :unprocessable_entity }
+      end
     end
   end
   
@@ -85,7 +105,7 @@ class RoundsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
-      params.require(:round).permit(:order, :tourney_id)
+      params.require(:round).permit(:order, :tourney_id, :player)
     end
 
     

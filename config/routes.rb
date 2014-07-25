@@ -8,6 +8,8 @@ XwingRank::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tourneys do
     get 'removePlayer/:player_id' => 'rounds#removePlayer'
+    get 'newPlayer/' => 'rounds#newPlayer'
+    post 'createInscription/' => 'rounds#createInscription'
     resources :rounds do
       resources :matches
     end
