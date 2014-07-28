@@ -1,12 +1,12 @@
 class Match < ActiveRecord::Base
 	belongs_to :round
-	belongs_to :player1, :class_name => :Player
-	belongs_to :player2, :class_name => :Player 
-
-  def self.results
+	has_many :results
+  
+  def self.possibleResults
     [0,1,3,5]
   end
   
+#  data=Result.joins(match: [round: [:tourney]] ).where(tourneys: {id: 1}).select('results.player_id').group('results.player_id').sum(:score)
   private
     def update_rankings
       winProb1 = EloHelper.calculateWinProb(self.player1.ranking, self.player2.ranking)

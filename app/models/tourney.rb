@@ -10,4 +10,9 @@ class Tourney < ActiveRecord::Base
   def stateName
     Tourney.states[self.state]
   end
+  
+  
+  def ranking
+    data=Result.joins(match: [round: [:tourney]] ).includes(:player).where(tourneys: {id: self.id}).select('results.player_id').group('results.player_id').sum(:score)
+  end
 end

@@ -5,6 +5,6 @@ module MatchesHelper
   end
   
   def collectResults
-    Match.results
+    Match.possibleResults
   end
 end
