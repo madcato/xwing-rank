@@ -10,7 +10,8 @@ class Match < ActiveRecord::Base
 
   validate :pointsValues
   validate :playersAreDifferent
-  validates :player1, :player2, presence: true
+  validates :player1, presence: true
+  # player2 == nil means that player1 receives a bye
   
   def self.possibleResults
     [0,1,3,5]

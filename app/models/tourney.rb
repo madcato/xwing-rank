@@ -4,6 +4,9 @@ class Tourney < ActiveRecord::Base
   belongs_to :user
   has_many :rankings
   
+  validates :titulo, presence: true
+  validates :titulo, length: {minimum: 8} 
+  
   def self.states
     ['new', 'published', 'initiated', 'finished']
   end

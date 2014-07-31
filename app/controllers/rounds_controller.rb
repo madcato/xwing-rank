@@ -103,6 +103,16 @@ class RoundsController < ApplicationController
     end
   end
   
+  def seedRound
+    @round = @tourney.rounds.find(params[:round_id])
+    @round.seedRound
+    
+    respond_to do |format|
+      format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
+      format.json { head :no_content }
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round

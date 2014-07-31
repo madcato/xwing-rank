@@ -65,6 +65,7 @@
       <th>Order</th>
       <th></th>
       <th></th>
+	  <th></th>
       <th></th>
     </tr>
   </thead>
@@ -74,6 +75,7 @@
       <tr>
         <td><%= round.order %></td>
         <td><%= link_to 'Show', tourney_round_matches_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
+		<td><%= link_to 'Seed', tourney_round_seedRound_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Edit', edit_tourney_round_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Destroy', [@tourney, round], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
