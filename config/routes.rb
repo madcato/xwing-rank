@@ -1,5 +1,7 @@
 XwingRank::Application.routes.draw do
   
+  resources :rankings
+
   resources :players_tourneys
 
   devise_for :users

@@ -2,6 +2,7 @@ class Tourney < ActiveRecord::Base
 	has_many :rounds, :dependent => :delete_all
   has_and_belongs_to_many :players
   belongs_to :user
+  has_many :rankings
   
   def self.states
     ['new', 'published', 'initiated', 'finished']
@@ -15,4 +16,17 @@ class Tourney < ActiveRecord::Base
   def ranking
     data=Result.joins(match: [round: [:tourney]] ).includes(:player).where(tourneys: {id: self.id}).select('results.player_id').group('results.player_id').sum(:score)
   end
+  
+  def addPlayerToRanking(player)
+    ranking = Ranking.new
+    ranking.player = player
+    ranking.tourney = self
+    ranking.save
+  end
+  
+  def removePlayerFromRanking(player)
+    ranking = Ranking.find_by(tourney_id: self.id, player_id: player.id)
+    ranking.destroy
+  end
+  
 end

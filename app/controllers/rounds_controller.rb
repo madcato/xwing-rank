@@ -7,6 +7,7 @@ class RoundsController < ApplicationController
   # GET /rounds.json
   def index
     @rounds = @tourney.rounds.all
+    @rankings =  @tourney.rankings.order('points DESC,breakpoints DESC,sos DESC')
   end
 
   # GET /rounds/1
@@ -71,6 +72,9 @@ class RoundsController < ApplicationController
   #GET 
   def removePlayer
     @tourney.players.delete(params[:player_id])
+    player = Player.find(params[:player_id])
+    @tourney.removePlayerFromRanking(player)
+    
     respond_to do |format|
       format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was removed from tourney.' }
       format.json { head :no_content }
@@ -82,9 +86,11 @@ class RoundsController < ApplicationController
   end
   
   def createInscription
-    
-    @tourney.players << Player.find(params[:player][:id])
-    
+
+    player = Player.find(params[:player][:id])
+    @tourney.players << player
+  
+    @tourney.addPlayerToRanking(player)
 
     respond_to do |format|
       if @tourney.save

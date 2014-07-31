@@ -21,11 +21,11 @@
   </div>
   <div class="form_group">
     <%= f.label :points1 %><br>
-	<%= select("match", "points1", collectResults(), {include_blank: 'None'}, class: "form-control") %>
+	<%= f.number_field :points1, class: "form-control" %>
   </div>
   <div class="form_group">
     <%= f.label :points2 %><br>
-	<%= select("match", "points2", collectResults(), {include_blank: 'None'}, class: "form-control") %>
+	<%= f.number_field :points2, class: "form-control" %>
   </div>
   
   

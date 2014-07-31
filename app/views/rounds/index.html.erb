@@ -26,6 +26,32 @@
 
 <%= link_to 'New Inscription', "/tourneys/#{@tourney.id}/newPlayer", class: "btn btn-primary btn-lg", role:"button" %>
 
+<% position = 0 %>
+<h2>Ranking</h2>
+<table class="table">
+  <thead>
+    <tr>
+	  <th>Ranking</th>
+      <th>Player</th>
+      <th>Points</th>
+	  <th>Breakpoints</th>
+	  <th>SOS</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rankings.each do |ranking| %>
+      <tr>
+		<td><%= position += 1%>  
+        <td><%= ranking.player.name %></td>
+		<td><%= ranking.points %></td>
+		<td><%= ranking.breakpoints %></td>
+		<td><%= ranking.sos %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <h2>Listing rounds</h2>
 
