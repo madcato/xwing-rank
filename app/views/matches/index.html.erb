@@ -28,8 +28,8 @@
       <tr>
         <td><%= match.player1.name %></td>
         <td><%= match.points1 %></td>
-        <td><%= match.player2.name %></td>
-        <td><%= match.points2 %></td>
+        <td><%= match.player2.name unless match.player2.nil? %></td>
+        <td><%= match.points2 unless match.player2.nil? %></td>
         <td><%= link_to 'Edit', edit_tourney_round_match_path(@tourney, @round, match), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Destroy', [@tourney, @round, match], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>

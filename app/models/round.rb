@@ -48,6 +48,37 @@ class Round < ActiveRecord::Base
   end
   
   def seedNormalRound
+    # Create pairings using one by one method
+    players = self.tourney.players
+    players = players.map.to_a
+    
+    while players.count > 0
+      player1 = players.shift
+      player2 = players.shift
+      tempPlayers = []
+      while checkRepeated(player1,player2)
+        # Put other player2
+        tempPlayers << player2
+        player2 = players.shift
+      end
+      if tempPlayers.count != 0 
+        players = tempPlayers + players
+      end
+      match = Match.new
+      match.player1 = player1
+      match.player2 = player2
+      match.round = self
+      match.save
+    end
+  end
+  
+  def checkRepeated(player1,player2)
+    match = Match.find_by(player1_id: player1, player2_id: player2)
+    return true unless match.nil?
+    match = Match.find_by(player1_id: player2, player2_id: player1)
+    return true unless match.nil?
+    
+    return false
   end
   
 private
@@ -58,7 +89,6 @@ private
   end
   
   def setCorrectOrder
-    puts "SETCORRECTORDER"
     if self.tourney.rounds.count == 0
       self.order = 1
     else
