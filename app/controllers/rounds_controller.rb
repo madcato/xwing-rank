@@ -28,8 +28,8 @@ class RoundsController < ApplicationController
   # POST /rounds
   # POST /rounds.json
   def create
-    @round = @tourney.rounds.new(round_params)
-
+    @round = @tourney.rounds.new
+    
     respond_to do |format|
       if @round.save
         format.html { redirect_to [@tourney, @round], notice: 'Round was successfully created.' }

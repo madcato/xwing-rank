@@ -85,4 +85,4 @@
 
 <br>
 
-<%= link_to 'New Round', new_tourney_round_path(@tourney), class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to 'New Round', tourney_rounds_path(@tourney), method: :post, class: "btn btn-primary btn-lg", role:"button" %>

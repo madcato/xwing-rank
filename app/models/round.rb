@@ -6,7 +6,11 @@ class Round < ActiveRecord::Base
   validates :order, uniqueness: true
   validate :orderValue
   
+  before_validation :setCorrectOrder
+  
   default_scope { order('2 ASC') }
+  
+  
   
   def isFirstRound?
     self.order == 1
@@ -53,4 +57,13 @@ private
     end
   end
   
+  def setCorrectOrder
+    puts "SETCORRECTORDER"
+    if self.tourney.rounds.count == 0
+      self.order = 1
+    else
+      lastRound = self.tourney.rounds.maximum(:order)
+      self.order = lastRound + 1
+    end
+  end
 end
