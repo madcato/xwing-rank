@@ -3,7 +3,6 @@ class Round < ActiveRecord::Base
 	has_many :matches, :dependent => :destroy
   
   validates :order, presence: true
-  validates :order, uniqueness: true
   validate :orderValue
   
   before_validation :setCorrectOrder
@@ -42,17 +41,22 @@ class Round < ActiveRecord::Base
         player2 = players.delete_at(index)
         match.player2 = player2
       end
+      checkBye(match)
       match.round = self
       match.save
     end
   end
   
+  def checkBye(match)
+    if !match.player1.nil? and match.player2.nil?
+      match.points1 = 50
+    end
+  end
+  
   def seedNormalRound
     # Create pairings using one by one method
-    players = self.tourney.players
-    players = players.map.to_a
-    
-    while players.count > 0
+    players = self.tourney.rankings.map(&:player).to_a
+    while !players.empty?
       player1 = players.shift
       player2 = players.shift
       tempPlayers = []
@@ -68,14 +72,15 @@ class Round < ActiveRecord::Base
       match.player1 = player1
       match.player2 = player2
       match.round = self
+      checkBye(match)
       match.save
     end
   end
   
   def checkRepeated(player1,player2)
-    match = Match.find_by(player1_id: player1, player2_id: player2)
+    match = self.tourney.matches.find_by(player1_id: player1, player2_id: player2)
     return true unless match.nil?
-    match = Match.find_by(player1_id: player2, player2_id: player1)
+    match = self.tourney.matches.find_by(player1_id: player2, player2_id: player1)
     return true unless match.nil?
     
     return false

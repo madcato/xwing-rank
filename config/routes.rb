@@ -12,6 +12,7 @@ XwingRank::Application.routes.draw do
     get 'removePlayer/:player_id' => 'rounds#removePlayer'
     get 'newPlayer/' => 'rounds#newPlayer'
     post 'createInscription/' => 'rounds#createInscription'
+    post 'createAndSeedRound/' => 'rounds#createAndSeedRound'
     resources :rounds do
       get 'seedRound/' => 'rounds#seedRound'
       resources :matches

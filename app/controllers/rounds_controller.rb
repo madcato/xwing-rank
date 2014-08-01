@@ -113,6 +113,22 @@ class RoundsController < ApplicationController
     end
   end
   
+  def createAndSeedRound
+    @round = @tourney.rounds.new
+    
+    respond_to do |format|
+      if !@round.save
+        format.html { render action: 'new' }
+        format.json { render json: @round.errors, status: :unprocessable_entity }
+      else
+      
+        @round.seedRound
+        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round

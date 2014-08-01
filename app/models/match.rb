@@ -35,7 +35,7 @@ class Match < ActiveRecord::Base
     
     def addRankings
       return if self.points1.nil?
-      return if self.points2.nil?
+      self.points2 = 0 if self.points2.nil?
       
       addRankingForPlayer(self.player1,self.points1,self.points2,self.player2) 
       addRankingForPlayer(self.player2,self.points2,self.points1,self.player1) unless self.player2.nil?
@@ -61,7 +61,7 @@ class Match < ActiveRecord::Base
       
       prevMatch = Match.find(self.id)
       return if prevMatch.points1.nil?
-      return if prevMatch.points2.nil?
+      prevMatch.points2 = 0 if prevMatch.points2.nil?
       
       removeRankingForPlayer(prevMatch.player1,prevMatch.points1,prevMatch.points2,prevMatch.player2)
       removeRankingForPlayer(prevMatch.player2,prevMatch.points2,prevMatch.points1,prevMatch.player1) unless prevMatch.player2.nil?

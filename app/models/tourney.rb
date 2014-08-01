@@ -3,6 +3,7 @@ class Tourney < ActiveRecord::Base
   has_and_belongs_to_many :players
   belongs_to :user
   has_many :rankings
+  has_many :matches, through: :rounds
   
   validates :titulo, presence: true
   validates :titulo, length: {minimum: 8} 
