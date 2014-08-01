@@ -56,7 +56,7 @@ class Round < ActiveRecord::Base
       player1 = players.shift
       player2 = players.shift
       tempPlayers = []
-      while checkRepeated(player1,player2)
+      while checkRepeated(player1,player2) and !players.empty?
         # Put other player2
         tempPlayers << player2
         player2 = players.shift
