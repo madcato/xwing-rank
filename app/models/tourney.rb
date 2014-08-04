@@ -33,4 +33,31 @@ class Tourney < ActiveRecord::Base
     ranking.destroy
   end
   
+  def calculateSOS
+    self.rankings.each {|ranking| 
+      ranking.sos = calculateSOSFor(ranking.player)
+      ranking.save
+    }
+  end
+
+  def calculateSOSFor(player)
+    playerMatches = self.matches.where(:player1 => player)
+    sos = 0
+    playerMatches.each {|match| 
+      unless match.player2.nil?
+        ranking = self.rankings.find_by(player_id: match.player2)
+        sos += ranking.points
+      end
+    }
+    
+    playerMatches = self.matches.where(:player2 => player)
+    playerMatches.each {|match| 
+      unless match.player1.nil?
+        ranking = self.rankings.find_by(player_id: match.player1)
+        sos += ranking.points
+      end
+    }
+    return sos
+  end
+  
 end
