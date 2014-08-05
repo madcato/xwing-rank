@@ -29,6 +29,20 @@ class Round < ActiveRecord::Base
     players = self.tourney.players
     players = players.map.to_a
     
+    # First assign a match to each player with a bye
+    for index in 0..self.tourney.rankings.count-1
+      ranking = self.tourney.rankings[index]
+      if ranking.bye
+        match = Match.new
+        match.player1 = ranking.player  
+        match.points1 = 100
+        match.points2 = 0
+        match.round = self
+        match.save
+        players.delete(ranking.player)
+      end
+    end
+    
     while players.count > 0
       index = rand(players.count)
       player1 = players.delete_at(index)

@@ -90,7 +90,7 @@ class RoundsController < ApplicationController
     player = Player.find(params[:player][:id])
     @tourney.players << player
   
-    @tourney.addPlayerToRanking(player)
+    @tourney.addPlayerToRanking(player,params[:inscription][:bye])
 
     respond_to do |format|
       if @tourney.save

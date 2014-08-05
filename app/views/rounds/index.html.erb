@@ -10,15 +10,17 @@
   <thead>
     <tr>
       <th>Player</th>
+	  <th>Bye</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tourney.players.each do |player| %>
+    <% @tourney.rankings.each do |ranking| %>
       <tr>
-        <td><%= player.name %></td>
-        <td><%= link_to 'Remove', "/tourneys/#{@tourney.id}/removePlayer/#{player.id}",  data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
+        <td><%= ranking.player.name %></td>
+		<td><%= ranking.bye if ranking.bye == true %></td>
+        <td><%= link_to 'Remove', "/tourneys/#{@tourney.id}/removePlayer/#{ranking.player.id}",  data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>

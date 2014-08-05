@@ -21,7 +21,10 @@
 	<%= select("player", "id", collectPlayersForAllTournmanets, {include_blank: 'None'}, class: "form-control") %>
   </div>  
   
-  
+  <div class="from_group">
+	  <%= f.label :bye %><br>
+	  <%= f.check_box :bye %>
+  </div>  
   
   <%= f.submit class: "btn btn-default" %>
 <% end %>

@@ -21,10 +21,11 @@ class Tourney < ActiveRecord::Base
     data=Result.joins(match: [round: [:tourney]] ).includes(:player).where(tourneys: {id: self.id}).select('results.player_id').group('results.player_id').sum(:score)
   end
   
-  def addPlayerToRanking(player)
+  def addPlayerToRanking(player,bye)
     ranking = Ranking.new
     ranking.player = player
     ranking.tourney = self
+    ranking.bye = bye
     ranking.save
   end
   

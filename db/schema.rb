@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731084332) do
+ActiveRecord::Schema.define(version: 20140805131211) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140731084332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tourney_id"
+    t.boolean  "bye",         default: false
   end
 
   create_table "rounds", force: true do |t|
