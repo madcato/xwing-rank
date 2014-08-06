@@ -1,13 +1,34 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+jovi:
+  name: Jovi Argandona
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  tourneys: tourney_one, tourneyTwo
+
+daniel:
+  name: Daniel Vela
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  tourneys: tourney_one
+
+esteban:
+  name: Esteban Frac
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  tourneys: tourney_one
+
+jacobo:
+  name: Jacobo Alonso
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
 
-two:
-  name: MyString
+victor:
+  name: Victor Pasamar
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1

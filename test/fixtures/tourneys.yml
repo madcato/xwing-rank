@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+tourneyOne:
   state: 1
-  titulo: MyString
+  titulo: Torneo 1
+  user: daniel
+  players: jovi, daniel, esteban
 
-two:
+tourneyTwo:
   state: 1
-  titulo: MyString
+  titulo: Torneo 2
+  user: daniel
+  

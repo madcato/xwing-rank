@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  player_id: 1
-  points: 1
-  breakpoints: 1
-  sos: 1
+rankingJoviOne:
+  player: jovi
+  points: 5
+  breakpoints: 155
+  sos: 0
+  tourney: tourneyOne
 
-two:
-  player_id: 1
-  points: 1
-  breakpoints: 1
-  sos: 1
+rankingDanielOne:
+  player: daniel
+  points: 0
+  breakpoints: 45
+  sos: 5
+  tourney: tourneyOne
+
+rankingEstebanOne:
+  player: esteban
+  points: 5
+  breakpoints: 150
+  sos: 0
+  tourney: tourneyOne
