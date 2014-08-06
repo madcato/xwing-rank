@@ -5,7 +5,7 @@ class TourneysController < ApplicationController
   # GET /tourneys
   # GET /tourneys.json
   def index
-    @tourneys = current_user.tourneys.all
+    @tourneys = current_user.tourneys
   end
 
   # GET /tourneys/1

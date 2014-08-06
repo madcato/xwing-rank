@@ -6,7 +6,7 @@ class RoundsController < ApplicationController
   # GET /rounds
   # GET /rounds.json
   def index
-    @rounds = @tourney.rounds.all
+    @rounds = @tourney.rounds
     @rankings =  @tourney.rankings
   end
 

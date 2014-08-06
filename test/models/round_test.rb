@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RoundTest < ActiveSupport::TestCase
   test "order must exists" do
-    round = Round.new
-    assert_not round.save, "Round saved without order field"
+    tourney = tourneys(:tourneyOne)
+    round = tourney.rounds.new
+    assert round.save, "Round must be saved"
   end
 end

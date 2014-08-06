@@ -2,7 +2,9 @@ require 'test_helper'
 
 class TourneysControllerTest < ActionController::TestCase
   setup do
-    @tourney = tourneys(:one)
+    @tourney = tourneys(:tourneyOne)
+    @user = users(:daniel)
+    sign_in @user
   end
 
   test "should get index" do
