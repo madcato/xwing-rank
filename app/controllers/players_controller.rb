@@ -71,9 +71,8 @@ class PlayersController < ApplicationController
   # DELETE /players/1
   # DELETE /players/1.json
   def destroy
-    @player.destroy
     respond_to do |format|
-      format.html { redirect_to players_url }
+      format.html { redirect_to players_url, alert: "Players can't be destroyed"}
       format.json { head :no_content }
     end
   end
