@@ -118,6 +118,16 @@ class RoundsController < ApplicationController
   end
   
   def createAndSeedRound
+    # check last round is filled completely
+    @lastRound = @tourney.lastRound
+    if !@lastRound.nil? and !@lastRound.allMatchesFilled?
+      respond_to do |format|
+        format.html { redirect_to :back, alert: "Last round is not completed" }
+        format.json { render json: @round.errors, status: :unprocessable_entity }
+      end
+      return
+    end
+    
     @round = @tourney.rounds.new
     
     respond_to do |format|
@@ -125,7 +135,6 @@ class RoundsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @round.errors, status: :unprocessable_entity }
       else
-      
         @round.seedRound
         format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
         format.json { head :no_content }

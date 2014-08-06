@@ -15,6 +15,22 @@ class Round < ActiveRecord::Base
     self.order == 1
   end
   
+  def previousRound
+    Round.find(order: self.order - 1)
+  end
+  
+  def allMatchesFilled?
+    self.matches.each { |match| 
+      if !match.player1.nil? and match.points1.nil?
+        return false
+      end
+      if !match.player2.nil? and match.points2.nil?
+        return false
+      end
+    }
+    return true
+  end
+  
   def seedRound
     if self.isFirstRound?
       self.seedFirstRound
