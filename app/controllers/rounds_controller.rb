@@ -82,7 +82,11 @@ class RoundsController < ApplicationController
   end
   
   def newPlayer
-    @player = @tourney.players.new
+    if params[:player_id].nil? or params[:player_id] == ""
+      @player = @tourney.players.new
+    else
+      @player = Player.find(params[:player_id])
+    end
   end
   
   def createInscription

@@ -25,6 +25,7 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    @tourney_id = params[:tourney_id]
   end
 
   # GET /players/1/edit
@@ -39,8 +40,13 @@ class PlayersController < ApplicationController
     
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @player }
+        if params[:tourney_id].nil? or params[:tourney_id] == ""
+          format.html { redirect_to @player, notice: 'Player was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @player }
+        else
+          format.html { redirect_to tourney_newPlayer_path(params[:tourney_id],player_id: @player), notice: 'Player was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @player }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @player.errors, status: :unprocessable_entity }

@@ -27,5 +27,6 @@
     <%= f.label :ranking %><br>
     <%= f.number_field :ranking, class: "form-control" %>
   </div>
+  <%= hidden_field_tag :tourney_id, @tourney_id %>
   <%= f.submit class: "btn btn-default" %>
 <% end %>
