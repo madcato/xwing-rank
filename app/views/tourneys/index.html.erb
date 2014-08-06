@@ -5,6 +5,7 @@
     <tr>
       <th>State</th>
       <th>Titulo</th>
+	  <th>Play Date</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= tourney.stateName %></td>
         <td><%= tourney.titulo %></td>
+		<td><%= tourney.playDate.to_formatted_s(:long_ordinal) unless tourney.playDate.nil? %></td>
         <td><%= link_to 'Show', tourney_rounds_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Edit', edit_tourney_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to 'Destroy', tourney, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
