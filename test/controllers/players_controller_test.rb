@@ -2,7 +2,9 @@ require 'test_helper'
 
 class PlayersControllerTest < ActionController::TestCase
   setup do
-    @player = players(:one)
+    @player = players(:jovi)
+    @user = users(:daniel)
+    sign_in @user
   end
 
   test "should get index" do
@@ -40,7 +42,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should destroy player" do
-    assert_difference('Player.count', -1) do
+    assert_no_difference('Player.count') do
       delete :destroy, id: @player
     end
 
