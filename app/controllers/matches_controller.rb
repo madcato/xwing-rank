@@ -6,14 +6,9 @@ class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.json
   def index
-    @matches = @round.matches.all
+    @matches = @round.matches
   end
-
-  # GET /matches/1
-  # GET /matches/1.json
-  def show
-  end
-
+  
   # GET /matches/new
   def new
     @match = @round.matches.new
