@@ -2,7 +2,9 @@ require 'test_helper'
 
 class RankingsControllerTest < ActionController::TestCase
   setup do
-    @ranking = rankings(:one)
+    @ranking = rankings(:rankingJoviOne)
+    @user = users(:daniel)
+    sign_in @user
   end
 
   test "should get index" do
