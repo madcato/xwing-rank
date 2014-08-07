@@ -13,3 +13,17 @@ matchEstebanByeRoundOne:
   player2: 
   points1: 50
   points2: 0
+
+matchDanielEstebanRoundTwo:
+  round: roundTwoTourneyOne
+  player1: daniel
+  player2: esteban
+  points1: 
+  points2: 
+
+matchJoviByeRoundTwo:
+  round: roundTwoTourneyOne
+  player1: jovi
+  player2: 
+  points1: 50
+  points2: 

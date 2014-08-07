@@ -16,7 +16,7 @@ class Round < ActiveRecord::Base
   end
   
   def previousRound
-    Round.find(order: self.order - 1)
+    Round.find_by(order: self.order - 1)
   end
   
   def allMatchesFilled?

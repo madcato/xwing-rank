@@ -6,7 +6,7 @@ class PlayerTest < ActiveSupport::TestCase
     assert_not player.save, "Player saved without a name"
   end
   
-  test "player name lengt" do
+  test "player name length" do
     player = Player.new
     player.name = "hola"
     assert_not player.save, "Player saved with a name too short"
