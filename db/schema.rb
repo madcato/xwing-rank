@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806095041) do
+ActiveRecord::Schema.define(version: 20140807065955) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140806095041) do
     t.integer  "points2"
   end
 
+  add_index "matches", ["player1_id", "player2_id"], name: "index_matches_on_player1_id_and_player2_id"
+
   create_table "players", force: true do |t|
     t.string   "name"
     t.string   "uniqueid"
@@ -39,12 +41,17 @@ ActiveRecord::Schema.define(version: 20140806095041) do
     t.datetime "updated_at"
   end
 
+  add_index "players", ["name"], name: "index_players_on_name", unique: true
+  add_index "players", ["ranking"], name: "index_players_on_ranking"
+
   create_table "players_tourneys", force: true do |t|
     t.integer  "player_id"
     t.integer  "tourney_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "players_tourneys", ["tourney_id", "player_id"], name: "index_players_tourneys_on_tourney_id_and_player_id", unique: true
 
   create_table "rankings", force: true do |t|
     t.integer  "player_id"
@@ -57,12 +64,18 @@ ActiveRecord::Schema.define(version: 20140806095041) do
     t.boolean  "bye",         default: false
   end
 
+  add_index "rankings", ["player_id", "tourney_id"], name: "index_rankings_on_player_id_and_tourney_id"
+  add_index "rankings", ["points", "breakpoints", "sos"], name: "index_rankings_on_points_and_breakpoints_and_sos"
+
   create_table "rounds", force: true do |t|
     t.integer  "order"
     t.integer  "tourney_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "rounds", ["order"], name: "index_rounds_on_order"
+  add_index "rounds", ["tourney_id", "order"], name: "index_rounds_on_tourney_id_and_order", unique: true
 
   create_table "tourneys", force: true do |t|
     t.integer  "state"
@@ -72,6 +85,8 @@ ActiveRecord::Schema.define(version: 20140806095041) do
     t.integer  "user_id"
     t.date     "playDate"
   end
+
+  add_index "tourneys", ["titulo"], name: "index_tourneys_on_titulo", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
