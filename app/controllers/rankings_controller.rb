@@ -30,7 +30,7 @@ class RankingsController < ApplicationController
     respond_to do |format|
       if @ranking.save
         format.html { redirect_to @ranking, notice: 'Ranking was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ranking }
+        format.json { render action: I18n.t('show'), status: :created, location: @ranking }
       else
         format.html { render action: 'new' }
         format.json { render json: @ranking.errors, status: :unprocessable_entity }

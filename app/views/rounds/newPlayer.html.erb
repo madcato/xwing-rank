@@ -1,7 +1,7 @@
 
 <%= render 'tourneys/info' %>
 
-<h1>New inscription</h1>
+<h1><%= t('newInscription')%></h1>
 
 <%= form_for("inscription", url: "/tourneys/#{@tourney.id}/createInscription", role: "form") do |f| %>
   <% if @player.errors.any? %>
@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="from_group">
-    <%= f.label :player %><br>
+    <%= Player.human_attribute_name(:name) %><br>
 	<%= select("player", "id", collectPlayersForAllTournmanets, {include_blank: 'None'}, class: "form-control") %>
   </div>  
   
@@ -28,5 +28,5 @@
   
   <%= f.submit class: "btn btn-default" %>
 <% end %>
-<%= link_to 'New player', new_player_path(tourney_id: @tourney), class: "btn btn-primary btn-lg", role:"button" %>
-<%= link_to 'Back', tourney_rounds_path(@tourney) %>
+<%= link_to t('newPlayer'), new_player_path(tourney_id: @tourney), class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to I18n.t('back'), tourney_rounds_path(@tourney) %>

@@ -2,22 +2,22 @@
 <%= render 'tourneys/info' %>
 
 <p>
-  <strong>Round:</strong>
+  <strong><%= t('Round') %>:</strong>
   <%= @round.order %>
 </p>
 
-<h1>Listing matches</h1>
+<h1><%= t('listingMatches') %></h1>
 
-<%= link_to 'Edit', edit_tourney_round_path(@tourney,@round) %> |
-<%= link_to 'Back', tourney_rounds_path(@tourney) %>
+<%= link_to I18n.t('edit'), edit_tourney_round_path(@tourney,@round) %> |
+<%= link_to I18n.t('back'), tourney_rounds_path(@tourney) %>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Player 1</th>
-      <th>Points 1</th>
-      <th>Player 2</th>
-      <th>Points 2</th>
+      <th><%= Match.human_attribute_name(:player1_id) %></th>
+      <th><%= Match.human_attribute_name(:points1) %></th>
+      <th><%= Match.human_attribute_name(:player2_id) %></th>
+      <th><%= Match.human_attribute_name(:points2) %></th>
       <th></th>
       <th></th>
     </tr>
@@ -30,8 +30,8 @@
         <td><%= match.points1 %></td>
         <td><%= match.player2.name unless match.player2.nil? %></td>
         <td><%= match.points2 unless match.player2.nil? %></td>
-        <td><%= link_to 'Edit', edit_tourney_round_match_path(@tourney, @round, match), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to 'Destroy', [@tourney, @round, match], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('edit'), edit_tourney_round_match_path(@tourney, @round, match), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('destroy'), [@tourney, @round, match], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -39,4 +39,4 @@
 
 <br>
 
-<%= link_to 'New Match', new_tourney_round_match_path(@tourney, @round), class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @round), class: "btn btn-primary btn-lg", role:"button" %>

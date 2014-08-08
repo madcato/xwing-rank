@@ -30,7 +30,7 @@ class PlayersTourneysController < ApplicationController
 #     respond_to do |format|
 #       if @players_tourney.save
 #         format.html { redirect_to @players_tourney, notice: 'Players tourney was successfully created.' }
-#         format.json { render action: 'show', status: :created, location: @players_tourney }
+#         format.json { render action: I18n.t('show'), status: :created, location: @players_tourney }
 #       else
 #         format.html { render action: 'new' }
 #         format.json { render json: @players_tourney.errors, status: :unprocessable_entity }

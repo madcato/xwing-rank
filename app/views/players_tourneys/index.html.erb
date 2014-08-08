@@ -16,9 +16,9 @@
       <tr>
         <td><%= players_tourney.player_id %></td>
         <td><%= players_tourney.tourney_id %></td>
-        <td><%= link_to 'Show', players_tourney %></td>
-        <td><%= link_to 'Edit', edit_players_tourney_path(players_tourney) %></td>
-        <td><%= link_to 'Destroy', players_tourney, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to I18n.t('show'), players_tourney %></td>
+        <td><%= link_to I18n.t('edit'), edit_players_tourney_path(players_tourney) %></td>
+        <td><%= link_to I18n.t('destroy'), players_tourney, method: :delete, data: { confirm: t("areYouSure") } %></td>
       </tr>
     <% end %>
   </tbody>

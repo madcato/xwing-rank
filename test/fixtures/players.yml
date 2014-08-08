@@ -6,6 +6,8 @@ jovi:
   numberOfMatches: 1
   ranking: 1
   tourneys: tourney_one, tourneyTwo
+  email: adf@asdf.es
+  city: Zaragoza
 
 daniel:
   name: Daniel Vela
@@ -13,6 +15,8 @@ daniel:
   numberOfMatches: 1
   ranking: 1
   tourneys: tourney_one
+  email: adf@asdf.es
+  city: Zaragoza
 
 esteban:
   name: Esteban Frac
@@ -20,15 +24,21 @@ esteban:
   numberOfMatches: 1
   ranking: 1
   tourneys: tourney_one
+  email: adf@asdf.es
+  city: Zaragoza
 
 jacobo:
   name: Jacobo Alonso
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
+  email: adf@asdf.es
+  city: Zaragoza
 
 victor:
   name: Victor Pasamar
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
+  email: adf@asdf.es
+  city: Zaragoza

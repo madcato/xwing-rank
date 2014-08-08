@@ -98,8 +98,8 @@ class RoundsController < ApplicationController
 
     respond_to do |format|
       if @tourney.save
-        format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was successfully isncribed.' }
-        format.json { render action: 'show', status: :created, location: @tourney }
+        format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was successfully inscribed.' }
+        format.json { render action: I18n.t('show'), status: :created, location: @tourney }
       else
         format.html { render action: 'newPlayer' }
         format.json { render json: @round.errors, status: :unprocessable_entity }

@@ -41,10 +41,10 @@ class PlayersController < ApplicationController
       if @player.save
         if params[:tourney_id].nil? or params[:tourney_id] == ""
           format.html { redirect_to @player, notice: 'Player was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @player }
+          format.json { render action: I18n.t('show'), status: :created, location: @player }
         else
           format.html { redirect_to tourney_newPlayer_path(params[:tourney_id],player_id: @player), notice: 'Player was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @player }
+          format.json { render action: I18n.t('show'), status: :created, location: @player }
         end
       else
         format.html { render action: 'new' }

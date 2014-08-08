@@ -26,7 +26,7 @@ class MatchesController < ApplicationController
     respond_to do |format|
       if @match.save
         format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: 'Match was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @match }
+        format.json { render action: I18n.t('show'), status: :created, location: @match }
       else
         format.html { render action: 'new' }
         format.json { render json: @match.errors, status: :unprocessable_entity }

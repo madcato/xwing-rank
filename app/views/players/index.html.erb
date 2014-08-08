@@ -1,13 +1,12 @@
-<h1>Listing players</h1>
+<h1><%= t('listingPlayers')%></h1>
 
-<%= link_to 'New Player', new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Ranking</th>
+      <th><%= Player.human_attribute_name(:name) %></th>
+      <th><%= Player.human_attribute_name(:ranking) %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,12 +16,11 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.id %></td>
         <td><%= player.name %></td>
         <td><%= player.ranking %></td>
-        <td><%= link_to 'Show', player, class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to 'Edit', edit_player_path(player), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('show'), player, class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('edit'), edit_player_path(player), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('destroy'), player, method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Player', new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg", role:"button" %>

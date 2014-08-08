@@ -1,5 +1,5 @@
-<h1>New tourney</h1>
+<h1><%= t('newTourney')%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', tourneys_path %>
+<%= link_to I18n.t('back'), tourneys_path %>
