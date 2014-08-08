@@ -12,21 +12,28 @@ class Match < ActiveRecord::Base
   validate :playersAreDifferent
   validates :player1, presence: true
   # player2 == nil means that player1 receives a bye
-  
+
+  after_save :update_rankings
+
   def self.possibleResults
     [0,1,3,5]
   end
   
   private
     def update_rankings
+      return if self.points1.nil?
+      return if self.points2.nil?
+      return if self.player1.nil?
+      return if self.player2.nil?
+      
       winProb1 = EloHelper.calculateWinProb(self.player1.ranking, self.player2.ranking)
       winProb2 = EloHelper.calculateWinProb(self.player2.ranking, self.player1.ranking)
     	win1 = 0.5
       win2 = 0.5
-    	win1 = 1 if self.winner == 1
-    	win1 = 0 if self.winner == 2
-    	win2 = 0 if self.winner == 1
-    	win2 = 1 if self.winner == 2
+    	win1 = 1 if self.points1 > self.points2
+    	win1 = 0 if self.points2 > self.points1
+    	win2 = 0 if win1 == 1
+    	win2 = 1 if win1 == 0
     	self.player1.ranking = EloHelper.calculateNewRanking(self.player1.ranking, winProb1, win1)
     	self.player2.ranking = EloHelper.calculateNewRanking(self.player2.ranking, winProb2, win2)
     	self.player1.save
@@ -44,9 +51,10 @@ class Match < ActiveRecord::Base
     def addRankingForPlayer(player,playerPoints, opponentPoints,opponent)
       difference,breakpoints,winner,modifiedWin,draw = calculateResults(player,playerPoints, opponentPoints,opponent)      
       
+      earned = pointsEarned(winner,modifiedWin,draw)
       ranking = Ranking.find_by(player_id: player.id, tourney_id: self.round.tourney.id)
       ranking.breakpoints += breakpoints
-      ranking.points += pointsEarned(winner,modifiedWin,draw)
+      ranking.points += earned
       ranking.save    
     end
     
@@ -70,9 +78,10 @@ class Match < ActiveRecord::Base
     def removeRankingForPlayer(player,playerPoints, opponentPoints,opponent)
       difference,breakpoints,winner,modifiedWin,draw = calculateResults(player,playerPoints, opponentPoints,opponent)
       
+      earned = pointsEarned(winner,modifiedWin,draw)
       ranking = Ranking.find_by(player_id: player.id, tourney_id: self.round.tourney.id)
       ranking.breakpoints -= breakpoints
-      ranking.points -= pointsEarned(winner,modifiedWin,draw)
+      ranking.points -= earned
       ranking.save
     end
     
@@ -104,4 +113,41 @@ class Match < ActiveRecord::Base
         errors.add(:player2,"Los jugadores deben ser diferentes")
       end
     end
+    
+    # def AddSOSToRankings(sos, rankings)
+    #   rankings.each { |ranking|
+    #     ranking.sos += sos
+    #     ranking.save
+    #   }
+    # end
+    #
+    # def opponentsOfPlayerInTourney(player,tourney)
+    #   playerMatches = tourney.matches.where(:player1 => player)
+    #   opponents = []
+    #   playerMatches.each {|match|
+    #     unless match.player2.nil?
+    #        ranking = Ranking.find_by(player_id: match.player2, tourney_id: tourney)
+    #        opponents << ranking
+    #     end
+    #   }
+    #
+    #   playerMatches = tourney.matches.where(:player2 => player)
+    #   playerMatches.each {|match|
+    #     unless match.player1.nil?
+    #       ranking = Ranking.find_by(player_id: match.player1, tourney_id: tourney)
+    #       opponents << ranking
+    #     end
+    #   }
+    #   return opponents
+    # end
+    #
+    # def removeSOSforOpponentsOfPlayer(player,earned)
+    #   opponents = opponentsOfPlayerInTourney(player,self.round.tourney)
+    #   AddSOSToRankings(-earned,opponents)
+    # end
+    #
+    # def addSOSforOpponentsOfPlayer(player,earned)
+    #   opponents = opponentsOfPlayerInTourney(player,self.round.tourney)
+    #   AddSOSToRankings(earned,opponents)
+    # end
 end

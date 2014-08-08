@@ -9,8 +9,6 @@ class Round < ActiveRecord::Base
   
   default_scope { order('2 ASC') }
   
-  
-  
   def isFirstRound?
     self.order == 1
   end

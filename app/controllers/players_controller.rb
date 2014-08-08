@@ -36,7 +36,6 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
-    @player.ranking = 1400 # All new players starts with ranking 1400
     
     respond_to do |format|
       if @player.save
@@ -85,6 +84,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :uniqueid, :numberOfMatches, :ranking)
+      params.require(:player).permit(:name, :email, :city, :ranking)
     end
 end

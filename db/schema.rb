@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807065955) do
+ActiveRecord::Schema.define(version: 20140808065140) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140807065955) do
     t.integer  "ranking"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "city"
   end
 
   add_index "players", ["name"], name: "index_players_on_name", unique: true
