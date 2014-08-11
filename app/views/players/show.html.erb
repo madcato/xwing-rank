@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= Player.human_attribute_name(:name) %>:</strong>
-  <%= @player.name %>
+  <strong><%= Player.human_attribute_name(:firstName) %>:</strong>
+  <%= @player.firstName %>
+</p>
+
+<p>
+  <strong><%= Player.human_attribute_name(:lastName) %>:</strong>
+  <%= @player.lastName %>
 </p>
 
 <p>

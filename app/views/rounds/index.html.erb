@@ -17,7 +17,7 @@
   <tbody>
     <% @tourney.rankings.each do |ranking| %>
       <tr>
-        <td><%= ranking.player.name %></td>
+        <td><%= ranking.player.completeName %></td>
 		<td><%= ranking.bye if ranking.bye == true %></td>
         <td><%= link_to I18n.t('destroy'), "/tourneys/#{@tourney.id}/removePlayer/#{ranking.player.id}",  data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
@@ -44,7 +44,7 @@
     <% @rankings.each do |ranking| %>
       <tr>
 		<td><%= position += 1%>  
-        <td><%= ranking.player.name %></td>
+        <td><%= ranking.player.completeName %></td>
 		<td><%= ranking.points %></td>
 		<td><%= ranking.breakpoints %></td>
 		<td><%= ranking.sos %></td>

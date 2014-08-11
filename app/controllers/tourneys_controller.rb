@@ -62,6 +62,17 @@ class TourneysController < ApplicationController
     end
   end
   
+  def report
+    @tourney = current_user.tourneys.find(params[:tourney_id])
+    render layout: false
+    filename = @tourney.titulo.camelize + ".txt"
+    headers['Pragma'] = 'public'
+    headers["Content-type"] = "text/plain" 
+    headers['Cache-Control'] = 'no-cache, must-revalidate, post-check=0, pre-check=0'
+    headers['Content-Disposition'] = "attachment; filename=\"#{filename}\"" 
+    headers['Expires'] = "0" 
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tourney

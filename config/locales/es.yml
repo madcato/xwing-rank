@@ -78,6 +78,7 @@ es:
       not_saved:
         one: "1 error impidió que este %{resource} fuese guardado:"
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"
+  report: "reporte"
   new: "nuevo"
   published: "publicado"
   initiated: "iniciado"
@@ -135,7 +136,8 @@ es:
         points1: "puntos 1"
         points2: "puntos 2"
       player:
-        name: "Nombre"
+        firtName: "Nombre"
+        lastName: "Apellidos"
         city: "Ciudad"
         email: "Correo electrónico"
       ranking:

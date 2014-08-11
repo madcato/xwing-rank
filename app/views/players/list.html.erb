@@ -5,7 +5,8 @@
   <thead>
     <tr>
       <th><%= t('position') %></th>
-      <th><%= Player.human_attribute_name(:name)%></th>
+      <th><%= Player.human_attribute_name(:firstName)%></th>
+			<th><%= Player.human_attribute_name(:lastName)%></th>
       <th><%= Player.human_attribute_name(:city)%></th>
       <th><%= Player.human_attribute_name(:ranking)%></th>
     </tr>
@@ -15,7 +16,8 @@
     <% @players.each do |player| %>
       <tr>
         <td><%= position %></td>
-        <td><%= player.name %></td>
+        <td><%= player.firstName %></td>
+				<td><%= player.lastName %></td>
         <td><%= player.city %></td>
         <td><%= player.ranking %></td>
       </tr>

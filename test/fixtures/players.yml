@@ -1,7 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 jovi:
-  name: Jovi Argandona
+  firstName: Jovi
+  lastName: Argandona
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
@@ -10,7 +11,8 @@ jovi:
   city: Zaragoza
 
 daniel:
-  name: Daniel Vela
+  firstName: Daniel
+  lastName: Vela
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
@@ -19,7 +21,8 @@ daniel:
   city: Zaragoza
 
 esteban:
-  name: Esteban Frac
+  firstName: Esteban
+  lastName: Frac
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
@@ -28,7 +31,8 @@ esteban:
   city: Zaragoza
 
 jacobo:
-  name: Jacobo Alonso
+  firstName: Jacobo
+  lastName: Alonso
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
@@ -36,7 +40,8 @@ jacobo:
   city: Zaragoza
 
 victor:
-  name: Victor Pasamar
+  firstName: Victor
+  lastName: Pasamar
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1

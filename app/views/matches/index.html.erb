@@ -26,9 +26,9 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><%= match.player1.name %></td>
+        <td><%= match.player1.completeName %></td>
         <td><%= match.points1 %></td>
-        <td><%= match.player2.name unless match.player2.nil? %></td>
+        <td><%= match.player2.completeName unless match.player2.nil? %></td>
         <td><%= match.points2 unless match.player2.nil? %></td>
         <td><%= link_to I18n.t('edit'), edit_tourney_round_match_path(@tourney, @round, match), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to I18n.t('destroy'), [@tourney, @round, match], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>

@@ -11,13 +11,15 @@ class Player < ActiveRecord::Base
   has_many :matches, :foreign_key => :player1_id, :dependent => :destroy
   has_many :rankings, :through => :tourneys
   
-  validates :name, presence: true
-  validates :name, length: {minimum: 4} 
+  validates :firstName, presence: true
+  validates :lastName, presence: true
   # validates :email, presence: true, email: true
   
   before_validation :ensure_ranking_has_value
   
-  
+  def completeName
+    self.firstName + " " + self.lastName
+  end
 private
   def ensure_ranking_has_value
     self.ranking = 1400 if self.ranking.nil?
