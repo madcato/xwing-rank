@@ -40,11 +40,11 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.save
         if params[:tourney_id].nil? or params[:tourney_id] == ""
-          format.html { redirect_to @player, notice: 'Player was successfully created.' }
-          format.json { render action: I18n.t('show'), status: :created, location: @player }
+          format.html { redirect_to @player, notice: t('playerCreated') }
+          format.json { render action: 'show', status: :created, location: @player }
         else
           format.html { redirect_to tourney_newPlayer_path(params[:tourney_id],player_id: @player), notice: 'Player was successfully created.' }
-          format.json { render action: I18n.t('show'), status: :created, location: @player }
+          format.json { render action: 'show', status: :created, location: @player }
         end
       else
         format.html { render action: 'new' }
@@ -58,7 +58,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to @player, notice: t('playerUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,7 +71,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1.json
   def destroy
     respond_to do |format|
-      format.html { redirect_to players_url, alert: "Players can't be destroyed"}
+      format.html { redirect_to players_url, alert: t('playerNotDestroyed') }
       format.json { head :no_content }
     end
   end

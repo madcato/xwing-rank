@@ -29,7 +29,7 @@ class TourneysController < ApplicationController
 
     respond_to do |format|
       if @tourney.save
-        format.html { redirect_to @tourney, notice: 'Tourney was successfully created.' }
+        format.html { redirect_to @tourney, notice: t('tourneyCreated') }
         format.json { render action: 'show', status: :created, location: @tourney }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class TourneysController < ApplicationController
   def update
     respond_to do |format|
       if @tourney.update(tourney_params)
-        format.html { redirect_to @tourney, notice: 'Tourney was successfully updated.' }
+        format.html { redirect_to @tourney, notice: t('tourneyUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

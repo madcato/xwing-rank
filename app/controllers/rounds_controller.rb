@@ -32,7 +32,7 @@ class RoundsController < ApplicationController
     
     respond_to do |format|
       if @round.save
-        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully created.' }
+        format.html { redirect_to [@tourney, @round], notice: t('roundCreated') }
         format.json { render action: 'show', status: :created, location: @round }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class RoundsController < ApplicationController
 
     respond_to do |format|
       if @round.update(round_params)
-        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
+        format.html { redirect_to [@tourney, @round], notice: t('roundUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,7 +76,7 @@ class RoundsController < ApplicationController
     @tourney.removePlayerFromRanking(player)
     
     respond_to do |format|
-      format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was removed from tourney.' }
+      format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerRemoved') }
       format.json { head :no_content }
     end
   end
@@ -98,7 +98,7 @@ class RoundsController < ApplicationController
 
     respond_to do |format|
       if @tourney.save
-        format.html { redirect_to tourney_rounds_path(@tourney), notice: 'Player was successfully inscribed.' }
+        format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerInscribed') }
         format.json { render action: I18n.t('show'), status: :created, location: @tourney }
       else
         format.html { render action: 'newPlayer' }
@@ -112,7 +112,7 @@ class RoundsController < ApplicationController
     @round.seedRound
     
     respond_to do |format|
-      format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
+      format.html { redirect_to [@tourney, @round], notice: t('roundUpdated') }
       format.json { head :no_content }
     end
   end
@@ -122,7 +122,7 @@ class RoundsController < ApplicationController
     @lastRound = @tourney.lastRound
     if !@lastRound.nil? and !@lastRound.allMatchesFilled?
       respond_to do |format|
-        format.html { redirect_to :back, alert: "Last round is not completed" }
+        format.html { redirect_to :back, alert: t('lastRoundNotFinished') }
         format.json { render json: @round.errors, status: :unprocessable_entity }
       end
       return
@@ -136,7 +136,7 @@ class RoundsController < ApplicationController
         format.json { render json: @round.errors, status: :unprocessable_entity }
       else
         @round.seedRound
-        format.html { redirect_to [@tourney, @round], notice: 'Round was successfully updated.' }
+        format.html { redirect_to [@tourney, @round], notice: t('roundUpdated') }
         format.json { head :no_content }
       end
     end
