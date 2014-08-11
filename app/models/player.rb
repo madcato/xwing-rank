@@ -18,7 +18,8 @@ class Player < ActiveRecord::Base
   before_validation :ensure_ranking_has_value
   
   def completeName
-    self.firstName + " " + self.lastName
+    lastName = self.lastName || ""
+    self.firstName + " " + lastName
   end
 private
   def ensure_ranking_has_value

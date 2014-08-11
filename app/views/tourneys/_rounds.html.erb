@@ -1,0 +1,18 @@
+<%= render partial: 'rounds/notice' %>
+<div class="row">
+  <div class="col-md-2">		
+		<ul class="nav nav-pills nav-stacked">
+		    <% @tourney.rounds.each do |round| %>
+		        <li class="<%= checkRound(round)%>"><%= link_to I18n.t('round') + " " + round.order.to_s, tourney_round_matches_path(@tourney, round) %></li>
+		    <% end %>
+				<li><%= link_to t('newRound'), tourney_createAndSeedRound_path(@tourney), method: :post %></li>
+		</ul>
+  </div>
+  <div class="col-md-10">
+		<%= render partial: 'matches/index' %>
+  </div>
+</div>
+
+
+
+

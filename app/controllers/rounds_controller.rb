@@ -2,12 +2,14 @@ class RoundsController < ApplicationController
   before_action :authenticate_user!
   before_filter :load_parent
   before_action :set_round, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /rounds
   # GET /rounds.json
   def index
     @rounds = @tourney.rounds
     @rankings =  @tourney.rankings
+    @selectedRound = @tourney.lastRound
+    @matches = @selectedRound.matches unless @selectedRound.nil?
   end
 
   # GET /rounds/1
@@ -18,6 +20,7 @@ class RoundsController < ApplicationController
 
   # GET /rounds/new
   def new
+    setActiveTab(:rounds)
     @round = @tourney.rounds.new
   end
 
@@ -28,6 +31,7 @@ class RoundsController < ApplicationController
   # POST /rounds
   # POST /rounds.json
   def create
+    setActiveTab(:rounds)
     @round = @tourney.rounds.new
     
     respond_to do |format|
@@ -44,6 +48,7 @@ class RoundsController < ApplicationController
   # PATCH/PUT /rounds/1
   # PATCH/PUT /rounds/1.json
   def update
+    setActiveTab(:rounds)
     @round = @tourney.rounds.find(params[:id])
 
     respond_to do |format|
@@ -60,6 +65,7 @@ class RoundsController < ApplicationController
   # DELETE /rounds/1
   # DELETE /rounds/1.json
   def destroy
+    setActiveTab(:rounds)
     @round = @tourney.rounds.find(params[:id])
     @round.destroy
 
@@ -71,6 +77,7 @@ class RoundsController < ApplicationController
   
   #GET 
   def removePlayer
+    setActiveTab(:inscribed)
     @tourney.players.delete(params[:player_id])
     player = Player.find(params[:player_id])
     @tourney.removePlayerFromRanking(player)
@@ -90,7 +97,7 @@ class RoundsController < ApplicationController
   end
   
   def createInscription
-
+    setActiveTab(:inscribed)
     player = Player.find(params[:player][:id])
     @tourney.players << player
   
@@ -108,6 +115,7 @@ class RoundsController < ApplicationController
   end
   
   def seedRound
+    setActiveTab(:rounds)
     @round = @tourney.rounds.find(params[:round_id])
     @round.seedRound
     
@@ -118,6 +126,7 @@ class RoundsController < ApplicationController
   end
   
   def createAndSeedRound
+    setActiveTab(:rounds)
     # check last round is filled completely
     @lastRound = @tourney.lastRound
     if !@lastRound.nil? and !@lastRound.allMatchesFilled?
@@ -144,6 +153,7 @@ class RoundsController < ApplicationController
   
   def calculateSOS
     @tourney.calculateSOS
+    setActiveTab(:ranking)
     redirect_to action: 'index'
   end
   

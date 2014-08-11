@@ -1,6 +1,6 @@
 <h1><%= t('listingPlayers')%></h1>
 
-<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg pull-right", role:"button" %>
 
 <table class="table">
   <thead>
@@ -8,8 +8,6 @@
       <th><%= Player.human_attribute_name(:firtName) %></th>
 			<th><%= Player.human_attribute_name(:lastName) %></th>
       <th><%= Player.human_attribute_name(:ranking) %></th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -20,9 +18,7 @@
         <td><%= player.firstName %></td>
 				<td><%= player.lastName %></td>
         <td><%= player.ranking %></td>
-        <td><%= link_to I18n.t('show'), player, class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to I18n.t('edit'), edit_player_path(player), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to I18n.t('destroy'), player, method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +26,4 @@
 
 <br>
 
-<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to t('newPlayer'), new_player_path, class: "btn btn-primary btn-lg pull-right", role:"button" %>

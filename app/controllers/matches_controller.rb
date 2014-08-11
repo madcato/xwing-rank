@@ -1,12 +1,14 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!
-  before_filter :load_parents
+  before_filter :load_parents, :setTab
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
   # GET /matches
   # GET /matches.json
   def index
     @matches = @round.matches
+    @selectedRound = @round
+    render "rounds/index"
   end
   
   # GET /matches/new
@@ -67,6 +69,10 @@ class MatchesController < ApplicationController
       @match = Match.find(params[:id])
     end
 
+    def setTab
+      setActiveTab(:rounds)
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
       params.require(:match).permit(:player1_id, :player2_id, :points1, :points2, :round_id)

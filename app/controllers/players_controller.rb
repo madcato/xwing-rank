@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.save
         if params[:tourney_id].nil? or params[:tourney_id] == ""
-          format.html { redirect_to @player, notice: t('playerCreated') }
+          format.html { redirect_to players_url, notice: t('playerCreated') }
           format.json { render action: 'show', status: :created, location: @player }
         else
           format.html { redirect_to tourney_newPlayer_path(params[:tourney_id],player_id: @player), notice: 'Player was successfully created.' }
@@ -58,7 +58,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: t('playerUpdated') }
+        format.html { redirect_to players_url, notice: t('playerUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

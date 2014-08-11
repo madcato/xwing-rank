@@ -1,95 +1,22 @@
-<h1><%= t('tourney')%></h1>
 
-<p id="notice"><%= notice %></p>
 
-<%= render 'tourneys/info' %>
-<h2><%= t('listingInscribedPlayers')%></h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= Ranking.human_attribute_name(:name) %></th>
-	  	<th><%= Ranking.human_attribute_name(:bye) %></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tourney.rankings.each do |ranking| %>
-      <tr>
-        <td><%= ranking.player.completeName %></td>
-		<td><%= ranking.bye if ranking.bye == true %></td>
-        <td><%= link_to I18n.t('destroy'), "/tourneys/#{@tourney.id}/removePlayer/#{ranking.player.id}",  data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('newInscription'), "/tourneys/#{@tourney.id}/newPlayer", class: "btn btn-primary btn-lg", role:"button" %>
-
-<% position = 0 %>
-<h2><%= t('ranking')%></h2>
-<table class="table">
-  <thead>
-    <tr>
-	  <th><%= t('position')%></th>
-      <th><%= Player.human_attribute_name(:name) %></th>
-      <th><%= Ranking.human_attribute_name(:points) %></th>
-	  <th><%= Ranking.human_attribute_name(:breakpoints) %></th>
-	  <th><%= Ranking.human_attribute_name(:sos) %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rankings.each do |ranking| %>
-      <tr>
-		<td><%= position += 1%>  
-        <td><%= ranking.player.completeName %></td>
-		<td><%= ranking.points %></td>
-		<td><%= ranking.breakpoints %></td>
-		<td><%= ranking.sos %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Recalculate SOS', tourney_calculateSOS_path(@tourney), class: "btn btn-primary btn-lg", role:"button" %>
+<div class='tourney-tab'>
+	<h1><%= t('tourney')%></h1>
+	<%= render 'tourneys/info' %>	
+</div>
+<ul class="nav nav-tabs tourney-tabs" role="tablist">
+  <li class="<%= checkActiveTab(:inscribed)%>" ><a href="#tab1" role="tab" data-toggle="tab"><%= t('inscribed')%></a></li>
+  <li class="<%= checkActiveTab(:ranking)%>"><a href="#tab2" role="tab" data-toggle="tab"><%= t('ranking')%></a></li>
+  <li class="<%= checkActiveTab(:rounds)%>"><a href="#tab3" role="tab" data-toggle="tab"><%= t('rounds')%></a></li>
+</ul>
 
 
 
-<h2>Listing rounds</h2>
+<div class="tab-content">
+	<div class="tab-pane <%= checkActiveTab(:inscribed)%>" id="tab1"><%= render 'tourneys/inscribed' %></div>
+	<div class="tab-pane <%= checkActiveTab(:ranking)%>" id="tab2"><%= render 'tourneys/ranking' %></div>
+	<div class="tab-pane <%= checkActiveTab(:rounds)%>" id="tab3"><%= render 'tourneys/rounds' %></div>
+</div>
 
-<%= link_to I18n.t('edit'), edit_tourney_path(@tourney) %> |
-<%= link_to I18n.t('back'), tourneys_path %>
 
-
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= Round.human_attribute_name(:order) %></th>
-      <th></th>
-      <th></th>
-	  <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rounds.each do |round| %>
-      <tr>
-        <td><%= round.order %></td>
-        <td><%= link_to I18n.t('show'), tourney_round_matches_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
-		<td><%= link_to 'Seed', tourney_round_seedRound_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to I18n.t('edit'), edit_tourney_round_path(@tourney, round), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to I18n.t('destroy'), [@tourney, round], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to t('newRound'), tourney_rounds_path(@tourney), method: :post, class: "btn btn-primary btn-lg", role:"button" %>
-
-<%= link_to 'New Round and Seed', tourney_createAndSeedRound_path(@tourney), method: :post, class: "btn btn-primary btn-lg", role:"button" %>
 

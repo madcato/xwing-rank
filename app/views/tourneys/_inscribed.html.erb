@@ -1,0 +1,27 @@
+<%= link_to t('newInscription'), "/tourneys/#{@tourney.id}/newPlayer", class: "btn btn-primary btn-lg pull-right", role:"button" %>
+
+<%= render partial: 'rounds/notice' %>
+<h2><%= t('listingInscribedPlayers')%></h2>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Ranking.human_attribute_name(:player_id) %></th>
+	  	<th><%= Ranking.human_attribute_name(:bye) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tourney.rankings.each do |ranking| %>
+      <tr>
+        <td><%= ranking.player.completeName %></td>
+		<td><%= ranking.bye if ranking.bye == true %></td>
+        <td><%= link_to I18n.t('destroy'), "/tourneys/#{@tourney.id}/removePlayer/#{ranking.player.id}",  data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('newInscription'), "/tourneys/#{@tourney.id}/newPlayer", class: "btn btn-primary btn-lg pull-right", role:"button" %>
