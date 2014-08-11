@@ -9,7 +9,7 @@ class Tourney < ActiveRecord::Base
   validates :titulo, length: {minimum: 8} 
   
   def self.states
-    ['new', 'published', 'initiated', 'finished']
+    [I18n.t('new'), I18n.t('published'), I18n.t('initiated'), I18n.t('finished')]
   end
   
   def stateName

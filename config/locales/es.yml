@@ -78,6 +78,13 @@ es:
       not_saved:
         one: "1 error impidió que este %{resource} fuese guardado:"
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"
+  new: "nuevo"
+  published: "publicado"
+  initiated: "iniciado"
+  finished: "finalizado"
+  orderPositive: "El orden debe ser un número positivo mayor o igual a 1."
+  valueZero: "El valor no puede ser menor que cero."
+  playersDifferent: "Los jugadores deben ser diferentes"
   hello: "Hello world"
   Players: "Jugadores"
   Tournaments: "Torneos"

@@ -99,10 +99,10 @@ class Match < ActiveRecord::Base
     
     def pointsValues
       if !self.points1.nil? and self.points1 < 0
-        errors.add(:points1, "El valor no puede ser menor que cero.")
+        errors.add(:points1, I18n.t('valueZero'))
       end
       if !self.points2.nil? and self.points2 < 0
-        errors.add(:points2, "El valor no puede ser menor que cero.")
+        errors.add(:points2, I18n.t('valueZero'))
       end
     end
     
@@ -110,7 +110,7 @@ class Match < ActiveRecord::Base
       return if self.player1.nil?
       return if self.player2.nil?
       if self.player1 == self.player2 
-        errors.add(:player2,"Los jugadores deben ser diferentes")
+        errors.add(:player2, I18n.t('playersDifferent'))
       end
     end
     

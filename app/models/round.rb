@@ -117,7 +117,7 @@ class Round < ActiveRecord::Base
 private
   def orderValue
     if !self.order.nil? and self.order <= 0
-      errors.add(:points1, "El orden debe ser un número positivo mayor o igual a 1.")
+      errors.add(:points1, I18n.t('orderPositive'))
     end
   end
   

@@ -13,7 +13,7 @@ class Player < ActiveRecord::Base
   
   validates :name, presence: true
   validates :name, length: {minimum: 4} 
-  validates :email, presence: true, email: true
+  # validates :email, presence: true, email: true
   
   before_validation :ensure_ranking_has_value
   
