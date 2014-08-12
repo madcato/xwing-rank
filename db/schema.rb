@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811101801) do
+ActiveRecord::Schema.define(version: 20140812073803) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140811101801) do
     t.datetime "updated_at"
     t.integer  "tourney_id"
     t.boolean  "bye",         default: false
+    t.boolean  "dropped"
   end
 
   add_index "rankings", ["player_id", "tourney_id"], name: "index_rankings_on_player_id_and_tourney_id"

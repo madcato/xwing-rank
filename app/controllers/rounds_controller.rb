@@ -78,12 +78,43 @@ class RoundsController < ApplicationController
   #GET 
   def removePlayer
     setActiveTab(:inscribed)
+    unless @tourney.lastRound.nil?
+      respond_to do |format|
+        format.html { redirect_to tourney_rounds_path(@tourney), alert: t('playerCantBeRemoved') }
+        format.json { head :no_content }
+      end
+      return
+    end
     @tourney.players.delete(params[:player_id])
     player = Player.find(params[:player_id])
     @tourney.removePlayerFromRanking(player)
     
     respond_to do |format|
       format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerRemoved') }
+      format.json { head :no_content }
+    end
+  end
+
+  def dropPlayer
+    setActiveTab(:inscribed)
+    ranking = Ranking.find_by(player_id: params[:player_id], tourney_id: @tourney)
+    
+    ranking.dropped = true unless ranking.nil?
+    ranking.save
+    respond_to do |format|
+      format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerDropped') }
+      format.json { head :no_content }
+    end
+  end
+  
+  def undropPlayer
+    setActiveTab(:inscribed)
+    ranking = Ranking.find_by(player_id: params[:player_id], tourney_id: @tourney)
+    
+    ranking.dropped = false unless ranking.nil?
+    ranking.save
+    respond_to do |format|
+      format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerUndropped') }
       format.json { head :no_content }
     end
   end

@@ -43,6 +43,8 @@ class Round < ActiveRecord::Base
     players = self.tourney.players
     players = players.map.to_a
     
+
+    
     # First assign a match to each player with a bye
     for index in 0..self.tourney.rankings.count-1
       ranking = self.tourney.rankings[index]
@@ -53,6 +55,11 @@ class Round < ActiveRecord::Base
         match.points2 = 0
         match.round = self
         match.save
+        players.delete(ranking.player)
+      end
+      
+      # Remove dropped players
+      if ranking.dropped
         players.delete(ranking.player)
       end
     end
@@ -84,6 +91,15 @@ class Round < ActiveRecord::Base
   def seedNormalRound
     # Create pairings using one by one method
     players = self.tourney.rankings.map(&:player).to_a
+    
+    for index in 0..self.tourney.rankings.count-1
+      ranking = self.tourney.rankings[index]      
+      # Remove dropped players
+      if ranking.dropped
+        players.delete(ranking.player)
+      end
+    end
+    
     while !players.empty?
       player1 = players.shift
       player2 = players.shift

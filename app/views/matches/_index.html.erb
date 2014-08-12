@@ -1,4 +1,4 @@
-<%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @selectedRound), class: "btn btn-primary btn-lg pull-right", role:"button" %>
+<%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @selectedRound), class: "btn btn-primary btn-lg pull-right", role:"button"  unless @selectedRound.nil? %>
 
 <h1><%= t('listingMatches') %></h1>
 
@@ -15,6 +15,7 @@
   </thead>
 
   <tbody>
+		<% @matches ||= [] %>
     <% @matches.each do |match| %>
       <tr>
         <td><%= match.player1.completeName %></td>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @selectedRound), class: "btn btn-primary btn-lg pull-right", role:"button" %>
+<%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @selectedRound), class: "btn btn-primary btn-lg pull-right", role:"button" unless @selectedRound.nil? %>

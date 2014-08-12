@@ -10,6 +10,8 @@ XwingRank::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tourneys do
     get 'report' => 'tourneys#report'
+    get 'dropPlayer/:player_id' => 'rounds#dropPlayer'
+    get 'undropPlayer/:player_id' => 'rounds#undropPlayer'
     get 'removePlayer/:player_id' => 'rounds#removePlayer'
     get 'newPlayer/' => 'rounds#newPlayer'
     post 'createInscription/' => 'rounds#createInscription'

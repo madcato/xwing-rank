@@ -20,5 +20,11 @@ module TourneysHelper
     return ""
   end
   
-
+  def playerNameDrop(ranking)
+    s = ""
+    s += '<s>' if ranking.dropped
+    s += ranking.player.completeName
+    s += '</s>' if ranking.dropped
+    return s
+  end
 end
