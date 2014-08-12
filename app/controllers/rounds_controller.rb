@@ -176,7 +176,7 @@ class RoundsController < ApplicationController
         format.json { render json: @round.errors, status: :unprocessable_entity }
       else
         @round.seedRound
-        format.html { redirect_to [@tourney, @round], notice: t('roundUpdated') }
+        format.html { redirect_to tourney_rounds_path(@tourney), notice: t('roundCreated') }
         format.json { head :no_content }
       end
     end

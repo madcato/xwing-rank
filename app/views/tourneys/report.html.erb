@@ -3,7 +3,10 @@
 firstName = player.firstName || "" 
 lastName = player.lastName || "" 
 city = player.city || "" 
-%><%= "" + firstName + "\t" + lastName + "\t" + city + "\t\t0\tactive" %>
+active = 'active'
+ranking = Ranking.find_by(player_id: player, tourney_id: @tourney)
+active = 'dropped' if ranking.dropped
+%><%= "" + firstName + "\t" + lastName + "\t" + city + "\t\t0\t" + active %>
 <% end %>
 
 <% @tourney.rounds.each do |round| %>
