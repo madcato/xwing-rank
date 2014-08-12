@@ -129,8 +129,8 @@ es:
   round: "Ronda"
   playerDropped: "Jugador eliminado del torneo"
   playerUndropped: "Jugador readmitido en el torneo"
-  drop: "Drop"
-  undrop: "Unrop"
+  drop: "drop"
+  undrop: "unrop"
   playerCantBeRemoved: "No se pueden eliminar jugadores una vez empezado el torneo. Realice un drop"
   activerecord:
     models:
