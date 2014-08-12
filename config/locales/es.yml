@@ -132,6 +132,8 @@ es:
   drop: "drop"
   undrop: "unrop"
   playerCantBeRemoved: "No se pueden eliminar jugadores una vez empezado el torneo. Realice un drop"
+  save: guardar
+  table: mesa
   activerecord:
     models:
       match: "Mesa"
