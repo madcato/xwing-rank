@@ -23,7 +23,7 @@ class TourneysControllerTest < ActionController::TestCase
       post :create, tourney: { state: @tourney.state, titulo: "Otro titulo para torneo" }
     end
 
-    assert_redirected_to tourney_path(assigns(:tourney))
+    assert_redirected_to tourneys_path()
   end
 
   test "should show tourney" do
@@ -38,7 +38,7 @@ class TourneysControllerTest < ActionController::TestCase
 
   test "should update tourney" do
     patch :update, id: @tourney, tourney: { state: @tourney.state, titulo: @tourney.titulo }
-    assert_redirected_to tourney_path(assigns(:tourney))
+    assert_redirected_to tourneys_path()
   end
 
   test "should destroy tourney" do

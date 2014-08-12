@@ -23,7 +23,7 @@ class PlayersControllerTest < ActionController::TestCase
       post :create, player: { firstName: "otroneanamme", lastName: "otroneanamme", email: @player.email, city: @player.city, ranking: @player.ranking}
     end
 
-    assert_redirected_to player_path(assigns(:player))
+    assert_redirected_to players_path()
   end
 
   test "should show player" do
@@ -38,7 +38,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should update player" do
     patch :update, id: @player, player: { firstName: @player.firstName, numberOfMatches: @player.numberOfMatches, ranking: @player.ranking, id: @player.id }
-    assert_redirected_to player_path(assigns(:player))
+    assert_redirected_to players_path()
   end
 
   test "should destroy player" do
