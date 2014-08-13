@@ -43,3 +43,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+gem 'rails_admin'
+gem 'simple_form'
+gem 'devise' # Authentication
+gem "cancan" # Authorization

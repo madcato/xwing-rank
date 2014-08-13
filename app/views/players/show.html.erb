@@ -1,24 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @player.name %>
+  <strong><%= Player.human_attribute_name(:firstName) %>:</strong>
+  <%= @player.firstName %>
 </p>
 
 <p>
-  <strong>Uniqueid:</strong>
-  <%= @player.uniqueid %>
+  <strong><%= Player.human_attribute_name(:lastName) %>:</strong>
+  <%= @player.lastName %>
 </p>
 
 <p>
-  <strong>Numberofmatches:</strong>
-  <%= @player.numberOfMatches %>
+  <strong><%= Player.human_attribute_name(:email) %>:</strong>
+  <%= @player.email %>
 </p>
 
 <p>
-  <strong>Ranking:</strong>
+  <strong><%= Player.human_attribute_name(:city) %>:</strong>
+  <%= @player.city %>
+</p>
+
+<p>
+  <strong><%= Player.human_attribute_name(:ranking) %>:</strong>
   <%= @player.ranking %>
 </p>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+<%= link_to I18n.t('edit'), edit_player_path(@player) %> |
+<%= link_to I18n.t('back'), players_path %>

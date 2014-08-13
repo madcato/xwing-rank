@@ -1,13 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  player1_id: 1
-  player2_id: 1
-  winner: 1
-  round_id: 1
+matchJoviDanielRoundOne:
+  round: roundOneTourneyOne
+  player1: jovi
+  player2: daniel
+  points1: 100
+  points2: 45
 
-two:
-  player1_id: 1
-  player2_id: 1
-  winner: 1
-  round_id: 1
+matchEstebanByeRoundOne:
+  round: roundOneTourneyOne
+  player1: esteban
+  player2: 
+  points1: 50
+  points2: 0
+
+matchDanielEstebanRoundTwo:
+  round: roundTwoTourneyOne
+  player1: daniel
+  player2: esteban
+  points1: 
+  points2: 
+
+matchJoviByeRoundTwo:
+  round: roundTwoTourneyOne
+  player1: jovi
+  player2: 
+  points1: 50
+  points2: 

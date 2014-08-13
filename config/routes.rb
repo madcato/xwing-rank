@@ -1,19 +1,39 @@
 XwingRank::Application.routes.draw do
   
+  resources :rankings
+
+  resources :players_tourneys
+
+  devise_for :users
+  devise_for :admins
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tourneys do
+    get 'report' => 'tourneys#report'
+    get 'dropPlayer/:player_id' => 'rounds#dropPlayer'
+    get 'undropPlayer/:player_id' => 'rounds#undropPlayer'
+    get 'removePlayer/:player_id' => 'rounds#removePlayer'
+    get 'newPlayer/' => 'rounds#newPlayer'
+    post 'createInscription/' => 'rounds#createInscription'
+    post 'createAndSeedRound/' => 'rounds#createAndSeedRound'
+    get 'calculateSOS/' => 'rounds#calculateSOS'
     resources :rounds do
+      get 'seedRound/' => 'rounds#seedRound'
       resources :matches
     end
   end
   
   resources :players
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'players#list'
 
+  get 'simple' => 'players#simple'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

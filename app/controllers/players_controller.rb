@@ -1,6 +1,10 @@
 class PlayersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_player, only: [:show, :edit, :update, :destroy]
-  before_filter :digest_authenticate, except: :list
+
+  def simple
+    @player = Player.new
+  end
  
   # GET /players
   # GET /players.json
@@ -21,6 +25,7 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    @tourney_id = params[:tourney_id]
   end
 
   # GET /players/1/edit
@@ -31,12 +36,16 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
-    @player.ranking = 1400 # All new players starts with ranking 1400
     
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @player }
+        if params[:tourney_id].nil? or params[:tourney_id] == ""
+          format.html { redirect_to players_url, notice: t('playerCreated') }
+          format.json { render action: 'show', status: :created, location: @player }
+        else
+          format.html { redirect_to tourney_newPlayer_path(params[:tourney_id],player_id: @player), notice: 'Player was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @player }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @player.errors, status: :unprocessable_entity }
@@ -49,7 +58,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to players_url, notice: t('playerUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,9 +70,8 @@ class PlayersController < ApplicationController
   # DELETE /players/1
   # DELETE /players/1.json
   def destroy
-    @player.destroy
     respond_to do |format|
-      format.html { redirect_to players_url }
+      format.html { redirect_to players_url, alert: t('playerNotDestroyed') }
       format.json { head :no_content }
     end
   end
@@ -76,6 +84,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :uniqueid, :numberOfMatches, :ranking)
+      params.require(:player).permit(:firstName,:lastName, :email, :city, :ranking)
     end
 end

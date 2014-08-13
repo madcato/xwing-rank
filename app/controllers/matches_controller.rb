@@ -1,20 +1,16 @@
 class MatchesController < ApplicationController
+  before_action :authenticate_user!
+  before_filter :load_parents, :setTab
   before_action :set_match, only: [:show, :edit, :update, :destroy]
-  before_filter :load_parents
-  before_filter :digest_authenticate  
- 
 
   # GET /matches
   # GET /matches.json
   def index
-    @matches = @round.matches.all
+    @matches = @round.matches
+    @selectedRound = @round
+    render "rounds/index"
   end
-
-  # GET /matches/1
-  # GET /matches/1.json
-  def show
-  end
-
+  
   # GET /matches/new
   def new
     @match = @round.matches.new
@@ -31,7 +27,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.save
-        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: 'Match was successfully created.' }
+        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: t('matchCreated') }
         format.json { render action: 'show', status: :created, location: @match }
       else
         format.html { render action: 'new' }
@@ -47,7 +43,7 @@ class MatchesController < ApplicationController
 
     respond_to do |format|
       if @match.update(match_params)
-        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: 'Match was successfully updated.' }
+        format.html { redirect_to tourney_round_matches_path(@tourney, @round), notice: t('matchUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,13 +69,17 @@ class MatchesController < ApplicationController
       @match = Match.find(params[:id])
     end
 
+    def setTab
+      setActiveTab(:rounds)
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:player1_id, :player2_id, :winner, :round_id)
+      params.require(:match).permit(:player1_id, :player2_id, :points1, :points2, :round_id)
     end
 
     def load_parents
-      @tourney = Tourney.find(params[:tourney_id]) 
+      @tourney = current_user.tourneys.find(params[:tourney_id]) 
       @round = @tourney.rounds.find(params[:round_id])
     end
 end

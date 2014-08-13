@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rankingJoviOne:
+  player: jovi
+  points: 5
+  breakpoints: 155
+  sos: 0
+  tourney: tourneyOne
+
+rankingDanielOne:
+  player: daniel
+  points: 0
+  breakpoints: 45
+  sos: 5
+  tourney: tourneyOne
+
+rankingEstebanOne:
+  player: esteban
+  points: 5
+  breakpoints: 150
+  sos: 0
+  tourney: tourneyOne

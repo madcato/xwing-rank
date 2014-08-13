@@ -1,13 +1,14 @@
-<h1>X-Wing Zaragoza</h1>
-<h2>Listado de jugadores</h2>
+<h1>X-Wing</h1>
+<h2><%= t('listingPlayers')%></h2>
 <% position = 1 %>
 <table class='table'>
   <thead>
     <tr>
-      <th>Position</th>
-      <th>Name</th>
-      <th>Uniqueid</th>
-      <th>Ranking</th>
+      <th><%= t('position') %></th>
+      <th><%= Player.human_attribute_name(:firstName)%></th>
+			<th><%= Player.human_attribute_name(:lastName)%></th>
+      <th><%= Player.human_attribute_name(:city)%></th>
+      <th><%= Player.human_attribute_name(:ranking)%></th>
     </tr>
   </thead>
 
@@ -15,8 +16,9 @@
     <% @players.each do |player| %>
       <tr>
         <td><%= position %></td>
-        <td><%= player.name %></td>
-        <td><%= player.uniqueid %></td>
+        <td><%= player.firstName %></td>
+				<td><%= player.lastName %></td>
+        <td><%= player.city %></td>
         <td><%= player.ranking %></td>
       </tr>
     <% position += 1 %>

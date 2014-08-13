@@ -1,0 +1,28 @@
+--- PLAYERS
+<% @tourney.players.each do |player| 
+firstName = player.firstName || "" 
+lastName = player.lastName || "" 
+city = player.city || "" 
+active = 'active'
+ranking = Ranking.find_by(player_id: player, tourney_id: @tourney)
+active = 'dropped' if ranking.dropped
+%><%= "" + firstName + "\t" + lastName + "\t" + city + "\t\t0\t" + active %>
+<% end %>
+
+<% @tourney.rounds.each do |round| %>
+<%= "--- ROUND " + round.order.to_s %>
+	<% round.matches.each do |match| 
+		firstName1 = ""
+		lastName1 = ""
+		firstName2 = ""
+		lastName2 = ""
+		firstName1 = match.player1.firstName || "" unless match.player1.nil?
+		lastName1 = match.player1.lastName || "" unless match.player1.nil?
+		firstName2 = match.player2.firstName || "" unless match.player2.nil?
+		lastName2 = match.player2.lastName || "" unless match.player2.nil?
+	%>
+<%= "" + firstName1 + "\t" + lastName1 + "\t" + match.points1.to_s %><%= "\n" + firstName2 + "\t" + lastName2 + "\t" + match.points2.to_s unless match.player2.nil? %>
+-
+	<% end %>
+
+<% end %>

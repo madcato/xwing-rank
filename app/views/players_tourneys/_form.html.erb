@@ -1,0 +1,12 @@
+<%= simple_form_for(@players_tourney) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :player_id %>
+    <%= f.input :tourney_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

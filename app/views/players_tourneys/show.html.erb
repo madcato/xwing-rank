@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @players_tourney.player_id %>
+</p>
+
+<p>
+  <strong>Tourney:</strong>
+  <%= @players_tourney.tourney_id %>
+</p>
+
+<%= link_to I18n.t('edit'), edit_players_tourney_path(@players_tourney) %> |
+<%= link_to I18n.t('back'), players_tourneys_path %>

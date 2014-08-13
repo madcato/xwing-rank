@@ -2,7 +2,9 @@ require 'test_helper'
 
 class TourneysControllerTest < ActionController::TestCase
   setup do
-    @tourney = tourneys(:one)
+    @tourney = tourneys(:tourneyOne)
+    @user = users(:daniel)
+    sign_in @user
   end
 
   test "should get index" do
@@ -18,10 +20,10 @@ class TourneysControllerTest < ActionController::TestCase
 
   test "should create tourney" do
     assert_difference('Tourney.count') do
-      post :create, tourney: { state: @tourney.state, titulo: @tourney.titulo }
+      post :create, tourney: { state: @tourney.state, titulo: "Otro titulo para torneo" }
     end
 
-    assert_redirected_to tourney_path(assigns(:tourney))
+    assert_redirected_to tourneys_path()
   end
 
   test "should show tourney" do
@@ -36,7 +38,7 @@ class TourneysControllerTest < ActionController::TestCase
 
   test "should update tourney" do
     patch :update, id: @tourney, tourney: { state: @tourney.state, titulo: @tourney.titulo }
-    assert_redirected_to tourney_path(assigns(:tourney))
+    assert_redirected_to tourneys_path()
   end
 
   test "should destroy tourney" do

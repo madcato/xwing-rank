@@ -1,24 +1,27 @@
-<h1>Listing tourneys</h1>
-<%= link_to 'New Tourney', new_tourney_path, class: "btn btn-primary btn-lg", role:"button" %>
-<table class="table">
+<h1><%= t('listingTourneys')%></h1>
+<%= link_to I18n.t('newTourney'), new_tourney_path, class: "btn btn-primary btn-lg pull-right", role:"button" %>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>State</th>
-      <th>Titulo</th>
+      <th><%= Tourney.human_attribute_name(:state) %></th>
+      <th><%= Tourney.human_attribute_name(:titulo) %></th>
+	  	<th><%= Tourney.human_attribute_name(:playDate) %></th>
       <th></th>
       <th></th>
-      <th></th>
+			<th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tourneys.each do |tourney| %>
       <tr>
-        <td><%= tourney.state %></td>
-        <td><%= tourney.titulo %></td>
-        <td><%= link_to 'Show', tourney_rounds_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to 'Edit', edit_tourney_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
-        <td><%= link_to 'Destroy', tourney, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", role:"button" %></td>
+        <td><%= tourney.stateName %></td>
+        <td><%= link_to tourney.titulo, tourney_rounds_path(tourney) %></td>
+				
+		<td><%= tourney.playDate.to_formatted_s(:long_ordinal) unless tourney.playDate.nil? %></td>
+		<td><%= link_to I18n.t('report'), tourney_report_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('edit'), edit_tourney_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
+        <td><%= link_to I18n.t('destroy'), tourney, method: :delete, data: { :confirm => t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Tourney', new_tourney_path, class: "btn btn-primary btn-lg", role:"button" %>
+<%= link_to I18n.t('newTourney'), new_tourney_path, class: "btn btn-primary btn-lg pull-right", role:"button" %>

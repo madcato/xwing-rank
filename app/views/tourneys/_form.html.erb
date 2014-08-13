@@ -11,13 +11,17 @@
     </div>
   <% end %>
 
-  <div class="form_group">
+  <div class="form-group">
     <%= f.label :state %><br>
-    <%= f.number_field :state, class: "form-control" %>
+	<%= select("tourney", "state", collectTournamentStates(), class: "form-control") %>
   </div>
-  <div class="form_group">
+  <div class="form-group">
     <%= f.label :titulo %><br>
     <%= f.text_field :titulo, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :playDate %><br>
+		<%= date_select :tourney, :playDate %>
   </div>
   <%= f.submit class: "btn btn-default" %>
 <% end %>

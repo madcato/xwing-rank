@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Order:</strong>
+  <strong><%= Round.human_attribute_name(:order) %>:</strong>
   <%= @round.order %>
 </p>
 
 <p>
-  <strong>Tourney:</strong>
+  <strong><%= Round.human_attribute_name(:tourney_id) %>:</strong>
   <%= @round.tourney_id %>
 </p>
 
-<%= link_to 'Edit', edit_tourney_round_path(@tourney,@round) %> |
-<%= link_to 'Back', tourney_rounds_path(@tourney) %>
+<%= link_to I18n.t('edit'), edit_tourney_round_path(@tourney,@round) %> |
+<%= link_to I18n.t('back'), tourney_rounds_path(@tourney) %>

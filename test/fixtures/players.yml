@@ -1,13 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+jovi:
+  firstName: Jovi
+  lastName: Argandona
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
+  tourneys: tourney_one, tourneyTwo
+  email: adf@asdf.es
+  city: Zaragoza
 
-two:
-  name: MyString
+daniel:
+  firstName: Daniel
+  lastName: Vela
   uniqueid: MyString
   numberOfMatches: 1
   ranking: 1
+  tourneys: tourney_one
+  email: adf@asdf.es
+  city: Zaragoza
+
+esteban:
+  firstName: Esteban
+  lastName: Frac
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  tourneys: tourney_one
+  email: adf@asdf.es
+  city: Zaragoza
+
+jacobo:
+  firstName: Jacobo
+  lastName: Alonso
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  email: adf@asdf.es
+  city: Zaragoza
+
+victor:
+  firstName: Victor
+  lastName: Pasamar
+  uniqueid: MyString
+  numberOfMatches: 1
+  ranking: 1
+  email: adf@asdf.es
+  city: Zaragoza
