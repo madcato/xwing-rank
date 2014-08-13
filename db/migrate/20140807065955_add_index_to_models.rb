@@ -1,6 +1,6 @@
 class AddIndexToModels < ActiveRecord::Migration
   def change
-    add_index :rankings, [:player_id, :tourney_id]
+    # add_index :rankings, [:player_id, :tourney_id]
     add_index :matches, [:player1_id, :player2_id]
     
     add_index :players, :ranking, order: { ranking: :desc}
