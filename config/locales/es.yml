@@ -134,6 +134,7 @@ es:
   playerCantBeRemoved: "No se pueden eliminar jugadores una vez empezado el torneo. Realice un drop"
   save: guardar
   table: mesa
+  manage: gestionar
   activerecord:
     models:
       match: "Mesa"

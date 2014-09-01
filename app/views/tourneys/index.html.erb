@@ -8,6 +8,7 @@
 	  	<th><%= Tourney.human_attribute_name(:playDate) %></th>
       <th></th>
       <th></th>
+      <th></th>
 			<th></th>
     </tr>
   </thead>
@@ -16,9 +17,11 @@
     <% @tourneys.each do |tourney| %>
       <tr>
         <td><%= tourney.stateName %></td>
-        <td><%= link_to tourney.titulo, tourney_rounds_path(tourney) %></td>
+        <td><%= tourney.titulo %></td>
 				
 		<td><%= tourney.playDate.to_formatted_s(:long_ordinal) unless tourney.playDate.nil? %></td>
+		
+		<td><%= link_to I18n.t('manage'), tourney_rounds_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
 		<td><%= link_to I18n.t('report'), tourney_report_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to I18n.t('edit'), edit_tourney_path(tourney), class: "btn btn-default btn-xs", role:"button" %></td>
         <td><%= link_to I18n.t('destroy'), tourney, method: :delete, data: { :confirm => t("areYouSure") }, class: "btn btn-danger btn-xs", role:"button" %></td>
