@@ -14,28 +14,29 @@
 
 <div class="row">
   <div class="col-xs-4">
-	  <div class="from_group">
+	  <div class="from-group">
 	    <%= f.label :player1_id %><br>
 		<%= select("match", "player1_id", collectPlayersForTournmanet(@tourney), {include_blank: 'None'}, class: "form-control") %>
 		</div>
   </div>
   <div class="col-xs-2">
-	  <div class="form_group">
+	  <div class="form-group">
 	    <%= f.label :points1 %><br>
 		<%= f.number_field :points1, class: "form-control" %>
 	  </div>
   </div>
 </div>
 
+
 <div class="row">
   <div class="col-xs-4">
-	  <div class="form_group">
+	  <div class="form-group">
 	    <%= f.label :player2_id %><br>
 		<%= select("match", "player2_id", collectPlayersForTournmanet(@tourney), {include_blank: 'None'}, class: "form-control") %>
 	  </div>
   </div>
   <div class="col-xs-2">
-	  <div class="form_group">
+	  <div class="form-group">
 	    <%= f.label :points2 %><br>
 		<%= f.number_field :points2, class: "form-control" %>
 	  </div>
@@ -44,11 +45,11 @@
 
 
   
-  <div class="row">
+  
   <%= f.hidden_field :round_id, class: "form-control" %>
   
   <%= f.submit class: "btn btn-default" %>
-	</div>
+	
 <% end %>
 	
 	
