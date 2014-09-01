@@ -145,8 +145,8 @@ es:
       match:
         player1_id: "Jugador 1"
         player2_id: "Jugador 2"
-        points1: "puntos destruidos"
-        points2: "puntos destruidos"
+        points1: "puntos enemigos destruidos"
+        points2: "puntos enemigos destruidos"
       player:
         firstName: "Nombre"
         lastName: "Apellidos"
