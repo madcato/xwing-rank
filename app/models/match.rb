@@ -55,6 +55,7 @@ class Match < ActiveRecord::Base
       ranking = Ranking.find_by(player_id: player.id, tourney_id: self.round.tourney.id)
       ranking.breakpoints += breakpoints
       ranking.points += earned
+      ranking.numberOfMatches += 1
       ranking.save    
     end
     
@@ -82,6 +83,7 @@ class Match < ActiveRecord::Base
       ranking = Ranking.find_by(player_id: player.id, tourney_id: self.round.tourney.id)
       ranking.breakpoints -= breakpoints
       ranking.points -= earned
+      ranking.numberOfMatches -= 1
       ranking.save
     end
     

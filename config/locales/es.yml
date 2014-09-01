@@ -156,6 +156,7 @@ es:
         points: "Puntos"
         breakpoints: "Margen de victoria"
         sos: "Dificultad de enfrentamientos"
+        numberOfMatches: "Partidas jugadas"
       round:
         order: "Orden"
         tourney_id: "Torneo"

@@ -7,6 +7,7 @@
     <tr>
 	  <th><%= t('position')%></th>
       <th><%= Player.human_attribute_name(:player_id) %></th>
+			<th><%= Ranking.human_attribute_name(:numberOfMatches) %></th>
       <th><%= Ranking.human_attribute_name(:points) %></th>
 	  <th><%= Ranking.human_attribute_name(:breakpoints) %></th>
 	  <th><%= Ranking.human_attribute_name(:sos) %></th>
@@ -17,7 +18,8 @@
     <% @tourney.rankings.each do |ranking| %>
       <tr>
 		<td><%= position += 1%>  
-        <td><%= ranking.player.completeName %></td>
+    <td><%= ranking.player.completeName %></td>
+		<td><%= ranking.numberOfMatches %></td>
 		<td><%= ranking.points %></td>
 		<td><%= ranking.breakpoints %></td>
 		<td><%= ranking.sos %></td>
