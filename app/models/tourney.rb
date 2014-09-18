@@ -8,6 +8,8 @@ class Tourney < ActiveRecord::Base
   validates :titulo, presence: true
   validates :titulo, length: {minimum: 8} 
   
+  before_create :initPublicId
+  
   def self.states
     [I18n.t('new'), I18n.t('published'), I18n.t('initiated'), I18n.t('finished')]
   end
@@ -64,4 +66,9 @@ class Tourney < ActiveRecord::Base
     return sos
   end
   
+private 
+  def initPublicId
+    o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
+    self.publicId = (0...10).map { o[rand(o.length)] }.join
+  end  
 end

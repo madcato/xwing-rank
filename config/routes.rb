@@ -34,6 +34,8 @@ XwingRank::Application.routes.draw do
 
   get 'simple' => 'players#simple'
   
+  get 'tourney/:publicId' => 'public_tourney#index'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

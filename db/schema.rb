@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901122341) do
+ActiveRecord::Schema.define(version: 20140918122222) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -88,8 +88,10 @@ ActiveRecord::Schema.define(version: 20140901122341) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.date     "playDate"
+    t.string   "publicId"
   end
 
+  add_index "tourneys", ["publicId"], name: "index_tourneys_on_publicId", unique: true
   add_index "tourneys", ["titulo"], name: "index_tourneys_on_titulo", unique: true
 
   create_table "users", force: true do |t|
