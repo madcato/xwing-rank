@@ -100,7 +100,7 @@ class Round < ActiveRecord::Base
       end
     end
     
-    while !players.empty?
+    until players.empty?
       player1 = players.shift
       player2 = players.shift
       tempPlayers = []
@@ -120,7 +120,42 @@ class Round < ActiveRecord::Base
       match.save
     end
   end
-  
+
+  def seedGroupedRound
+    players = self.tourney.rankings.map(&:player).to_a
+    groups = []
+    
+    # Make ordered groups grouping by match points
+    until players.empty?
+      player = players.shift
+      group = [player]
+      while !players.empty? and player.points == players[0].points
+        group << players.shift
+      end
+      groups << group
+    end
+    
+    until groups.empty?
+      group = groups.shift
+      oddPlayer = nil
+      if gorup.length.odd?
+        oddPlayer = group.pop
+      end
+      until group.empty?
+        player1 = players.shift
+        player2 = players.pop
+        tempPlayers = []
+        while checkRepeated(player1,player2) and !players.empty?
+          # Put other player2
+          tempPlayers.unshift(player2)
+          player2 = players.pop
+        end
+        
+        
+      end
+    end
+  end  
+
   def checkRepeated(player1,player2)
     match = self.tourney.matches.find_by(player1_id: player1, player2_id: player2)
     return true unless match.nil?
