@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918122222) do
+ActiveRecord::Schema.define(version: 20140924080438) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140918122222) do
     t.integer  "user_id"
     t.date     "playDate"
     t.string   "publicId"
+    t.integer  "seedType",   default: 1
   end
 
   add_index "tourneys", ["publicId"], name: "index_tourneys_on_publicId", unique: true

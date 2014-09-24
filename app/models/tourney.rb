@@ -7,6 +7,8 @@ class Tourney < ActiveRecord::Base
   
   validates :titulo, presence: true
   validates :titulo, length: {minimum: 8} 
+  validates :seedType, presence: true
+  validates :seedType, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 2 }
   
   before_create :initPublicId
   

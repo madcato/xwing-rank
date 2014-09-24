@@ -27,5 +27,16 @@
     <%= f.label :publicId %><br>
 		<%= f.text_field :publicId, class: "form-control" %>
   </div>
+  <div class="form-group">
+		<%= f.label :seedType %><br>
+		<%= f.radio_button :seedType, 2, :checked => true %> 
+	  <%= label :seedType_grouped, t(:seedType_grouped) %>
+		<br>
+	  <%= f.radio_button :seedType, 1 %>
+	  <%= label :seedType_correlative, t(:seedType_correlative) %>
+	</div>
+		
+		
+		
   <%= f.submit class: "btn btn-default" %>
 <% end %>

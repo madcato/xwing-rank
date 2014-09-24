@@ -135,6 +135,8 @@ es:
   save: guardar
   table: mesa
   manage: gestionar
+  seedType_grouped: "agrupado"
+  seedType_correlative: "correlativo"
   activerecord:
     models:
       match: "Mesa"
@@ -165,6 +167,7 @@ es:
         state: "Estado"
         titulo: "Torneo"
         playDate: "Fecha del realización"
+        seedType: "Tipo de emparejamiento"
   date:
     abbr_day_names:
     - dom
