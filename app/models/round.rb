@@ -33,6 +33,7 @@ class Round < ActiveRecord::Base
     if self.isFirstRound?
       self.seedFirstRound
     else
+      self.tourney.calculateSOS
       self.seedNormalRound
     end
   end

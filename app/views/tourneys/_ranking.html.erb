@@ -1,5 +1,4 @@
 <%= render partial: 'rounds/notice' %>
-<%= link_to 'Recalculate SOS', tourney_calculateSOS_path(@tourney), class: "btn btn-primary btn-lg pull-right", role:"button" %>
 <% position = 0 %>
 <h2><%= t('ranking')%></h2>
 <table class="table">
@@ -28,5 +27,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Recalculate SOS', tourney_calculateSOS_path(@tourney), class: "btn btn-primary btn-lg pull-right", role:"button" %>
 

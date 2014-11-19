@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 20140924080438) do
     t.integer  "points2"
   end
 
-  add_index "matches", ["player1_id", "player2_id"], name: "index_matches_on_player1_id_and_player2_id"
-
   create_table "players", force: true do |t|
     t.string   "firstName"
     t.string   "uniqueid"
@@ -44,16 +42,12 @@ ActiveRecord::Schema.define(version: 20140924080438) do
     t.string   "lastName"
   end
 
-  add_index "players", ["ranking"], name: "index_players_on_ranking"
-
   create_table "players_tourneys", force: true do |t|
     t.integer  "player_id"
     t.integer  "tourney_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "players_tourneys", ["tourney_id", "player_id"], name: "index_players_tourneys_on_tourney_id_and_player_id", unique: true
 
   create_table "rankings", force: true do |t|
     t.integer  "player_id"
@@ -68,18 +62,12 @@ ActiveRecord::Schema.define(version: 20140924080438) do
     t.integer  "numberOfMatches", default: 0
   end
 
-  add_index "rankings", ["player_id", "tourney_id"], name: "index_rankings_on_player_id_and_tourney_id"
-  add_index "rankings", ["points", "breakpoints", "sos"], name: "index_rankings_on_points_and_breakpoints_and_sos"
-
   create_table "rounds", force: true do |t|
     t.integer  "order"
     t.integer  "tourney_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "rounds", ["order"], name: "index_rounds_on_order"
-  add_index "rounds", ["tourney_id", "order"], name: "index_rounds_on_tourney_id_and_order", unique: true
 
   create_table "tourneys", force: true do |t|
     t.integer  "state"
@@ -93,7 +81,6 @@ ActiveRecord::Schema.define(version: 20140924080438) do
   end
 
   add_index "tourneys", ["publicId"], name: "index_tourneys_on_publicId", unique: true
-  add_index "tourneys", ["titulo"], name: "index_tourneys_on_titulo", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
