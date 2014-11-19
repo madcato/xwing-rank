@@ -137,6 +137,7 @@ es:
   manage: gestionar
   seedType_grouped: "agrupado"
   seedType_correlative: "correlativo"
+  table: Mesa
   activerecord:
     models:
       match: "Mesa"
