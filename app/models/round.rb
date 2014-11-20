@@ -7,6 +7,8 @@ class Round < ActiveRecord::Base
   
   before_validation :setCorrectOrder
   
+  after_destroy :recalculateSOS
+  
   default_scope { order('2 ASC') }
   
   def isFirstRound?
@@ -15,6 +17,10 @@ class Round < ActiveRecord::Base
   
   def previousRound
     Round.find_by(order: self.order - 1)
+  end
+  
+  def recalculateSOS
+    self.tourney.calculateSOS
   end
   
   def allMatchesFilled?
