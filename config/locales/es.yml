@@ -139,7 +139,8 @@ es:
   seedType_correlative: "correlativo"
   table: Mesa
   destroy_round: "eliminar ronda"
-  printPage: "Imprimir esta página"
+  printPage: "Imprimir"
+  printP: "Pulsar aquí para iniciar impresión"
   activerecord:
     models:
       match: "Mesa"

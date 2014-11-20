@@ -160,6 +160,7 @@ class RoundsController < ApplicationController
     setActiveTab(:rounds)
     @round = @tourney.rounds.find(params[:round_id])
     @matches = @round.matches
+    @selectedRound = @round
     render :layout => 'printable'
   end
   

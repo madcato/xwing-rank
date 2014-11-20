@@ -3,7 +3,7 @@
 <%= render partial: 'rounds/notice' %>
 <h2><%= t('listingInscribedPlayers')%></h2>
 
-
+<%= link_to t('printPage'), "/tourneys/#{@tourney.id}/printInscribed", class: "btn btn-info btn-lg pull-left", role:"button", :target => "_blank" %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -35,5 +35,5 @@
 </table>
 
 <%= link_to t('newInscription'), "/tourneys/#{@tourney.id}/newPlayer", class: "btn btn-primary btn-lg pull-right", role:"button" %>
-<%= link_to t('printPage'), "/tourneys/#{@tourney.id}/printInscribed", class: "btn btn-info btn-lg pull-left", role:"button", :target => "_blank" %>
+
 
