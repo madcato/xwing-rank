@@ -1,12 +1,10 @@
-<%= render partial: 'rounds/notice' %>
 <% position = 0 %>
 <h2><%= t('ranking')%></h2>
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
 	  <th><%= t('position')%></th>
       <th><%= Player.human_attribute_name(:player_id) %></th>
-			<th><%= Ranking.human_attribute_name(:numberOfMatches) %></th>
       <th><%= Ranking.human_attribute_name(:points) %></th>
 	  <th><%= Ranking.human_attribute_name(:breakpoints) %></th>
 	  <th><%= Ranking.human_attribute_name(:sos) %></th>
@@ -17,8 +15,7 @@
     <% @tourney.rankings.each do |ranking| %>
       <tr>
 		<td><%= position += 1%>  
-    <td><%= ranking.player.completeName %></td>
-		<td><%= ranking.numberOfMatches %></td>
+		<td><%= ranking.player.completeName %></td>
 		<td><%= ranking.points %></td>
 		<td><%= ranking.breakpoints %></td>
 		<td><%= ranking.sos %></td>
@@ -26,7 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('printPage'), "/tourneys/#{@tourney.id}/printRanking", class: "btn btn-info btn-lg pull-left", role:"button", :target => "_blank" %>
-
-

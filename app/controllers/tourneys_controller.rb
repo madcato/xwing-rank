@@ -78,6 +78,11 @@ class TourneysController < ApplicationController
     render :layout => 'printable'
   end
   
+  def printRanking
+    @tourney = current_user.tourneys.find(params[:tourney_id])
+    render :layout => 'printable'
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tourney
