@@ -1,11 +1,10 @@
 <%= link_to link_to I18n.t('newMatch'), new_tourney_round_match_path(@tourney, @selectedRound), class: "btn btn-primary btn-lg pull-right", role:"button"  unless @selectedRound.nil? %>
-<%= link_to I18n.t('destroy'), [@tourney, @selectedRound], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-lg", role:"button" unless @selectedRound.nil? %>
-
 
 <% i = 0 %>
 <h1><%= t('listingMatches') %> - <%= t('round') + " " + @selectedRound.order.to_s unless @selectedRound.nil? %></h1>
+<%= link_to I18n.t('destroy_round'), [@tourney, @selectedRound], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-lg", role:"button" unless @selectedRound.nil? %>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
 	  <th><%= I18n.t('table') %></th>

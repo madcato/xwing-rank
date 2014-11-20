@@ -78,7 +78,7 @@ es:
       not_saved:
         one: "1 error impidió que este %{resource} fuese guardado:"
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"
-  report: "reporte"
+  report: "Descargar fichero de datos para Edge"
   new: "nuevo"
   published: "publicado"
   initiated: "iniciado"
@@ -130,7 +130,7 @@ es:
   playerDropped: "Jugador eliminado del torneo"
   playerUndropped: "Jugador readmitido en el torneo"
   drop: "drop"
-  undrop: "unrop"
+  undrop: "undrop"
   playerCantBeRemoved: "No se pueden eliminar jugadores una vez empezado el torneo. Realice un drop"
   save: guardar
   table: mesa
@@ -138,6 +138,7 @@ es:
   seedType_grouped: "agrupado"
   seedType_correlative: "correlativo"
   table: Mesa
+  destroy_round: "eliminar ronda"
   activerecord:
     models:
       match: "Mesa"

@@ -1,8 +1,10 @@
 
-
 <div class='tourney-tab'>
+	<%= link_to I18n.t('report'), tourney_report_path(@tourney), class: "btn btn-default btn-xs pull-right", role:"button" %>
+	
 	<h1><%= t('tourney')%></h1>
 	<%= render 'tourneys/info' %>	
+	
 </div>
 <ul class="nav nav-tabs tourney-tabs" role="tablist">
   <li class="<%= checkActiveTab(:inscribed)%>" ><a href="#tab1" role="tab" data-toggle="tab"><%= t('inscribed')%></a></li>
