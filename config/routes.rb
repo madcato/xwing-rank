@@ -20,6 +20,7 @@ XwingRank::Application.routes.draw do
     post 'createAndSeedRound/' => 'rounds#createAndSeedRound'
     resources :rounds do
       get 'seedRound/' => 'rounds#seedRound'
+      get 'printRound/' => 'rounds#printRound'
       resources :matches
     end
   end

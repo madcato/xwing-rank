@@ -1,0 +1,31 @@
+
+
+<% i = 0 %>
+<h1><%= t('listingMatches') %> - <%= t('round') + " " + @selectedRound.order.to_s unless @selectedRound.nil? %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+	  <th><%= I18n.t('table') %></th>
+      <th><%= Match.human_attribute_name(:player1_id) %></th>
+      <th><%= Match.human_attribute_name(:points1) %></th>
+      <th><%= Match.human_attribute_name(:player2_id) %></th>
+      <th><%= Match.human_attribute_name(:points2) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+		<% @matches ||= [] %>
+    <% @matches.each do |match| %>
+      <tr>
+		<td><%= i+= 1 %></td>
+        <td><%= match.player1.completeName %></td>
+        <td><%= match.points1 %></td>
+        <td><%= match.player2.completeName unless match.player2.nil? %></td>
+        <td><%= match.points2 unless match.player2.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

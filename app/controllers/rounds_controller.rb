@@ -156,6 +156,13 @@ class RoundsController < ApplicationController
     end
   end
   
+  def printRound
+    setActiveTab(:rounds)
+    @round = @tourney.rounds.find(params[:round_id])
+    @matches = @round.matches
+    render :layout => 'printable'
+  end
+  
   def createAndSeedRound
     setActiveTab(:rounds)
     # check last round is filled completely

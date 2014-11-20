@@ -4,7 +4,7 @@
 <h1><%= t('listingMatches') %> - <%= t('round') + " " + @selectedRound.order.to_s unless @selectedRound.nil? %></h1>
 <%= link_to I18n.t('destroy_round'), [@tourney, @selectedRound], method: :delete, data: { confirm: t("areYouSure") }, class: "btn btn-danger btn-lg", role:"button" unless @selectedRound.nil? %>
 
-<table class="table table-hover">
+<table class="table table-hover table-striped">
   <thead>
     <tr>
 	  <th><%= I18n.t('table') %></th>
