@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Ranking.human_attribute_name(:player_id) %></th>
+	  	<th><%= Ranking.human_attribute_name(:bye) %></th>
+      <th></th>
+			<th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tourney.rankings.each do |ranking| %>
+      <tr>
+				<% if ranking.dropped %>
+				<td><s><%= ranking.player.completeName %></s></td>
+				<% else %>
+        <td><%= ranking.player.completeName %></td>
+				<% end %>
+		<td><%= ranking.bye if ranking.bye == true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
