@@ -6,7 +6,7 @@
 </p>
 <% position = 0 %>
 <h2><%= t('ranking')%></h2>
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
 	  <th><%= t('position')%></th>
@@ -31,3 +31,33 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<h2><%= t('rounds')%></h2>
+<% @tourney.rounds.each do |round| %>
+
+<h3><strong><%= t('Round') %>: </strong><%= round.order %></h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Match.human_attribute_name(:player1_id) %></th>
+      <th><%= Match.human_attribute_name(:points1) %></th>
+      <th><%= Match.human_attribute_name(:player2_id) %></th>
+      <th><%= Match.human_attribute_name(:points2) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% round.matches.each do |match| %>
+      <tr>
+        <td><%= match.player1.completeName %></td>
+        <td><%= match.points1 %></td>
+        <td><%= match.player2.completeName unless match.player2.nil? %></td>
+        <td><%= match.points2 unless match.player2.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% end %>

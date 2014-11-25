@@ -7,7 +7,7 @@ class PublicTourneyController < ApplicationController
       if @tourney
         format.html {  }
       else
-        format.html { redirect_to :root, notice: t('invalidPublicId') }
+        format.html { redirect_to :root, alert: t('invalidPublicId') }
       end
     end
   end
