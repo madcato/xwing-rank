@@ -1,7 +1,18 @@
 
 <div class='tourney-tab'>
-	<%= link_to I18n.t('report'), tourney_report_path(@tourney), class: "btn btn-default btn-xs pull-right", role:"button" %>
-	
+	<ul class="nav nav-pills nav-stacked pull-right">
+		<li>
+			<%= link_to I18n.t('editTourney'), edit_tourney_path(@tourney)%>
+		</li>
+	    <% unless @tourney.publicId.nil? %>
+		<li>
+		  <% url = url_for(:controller => 'public_tourney', :action => 'index', :publicId => @tourney.publicId) %>
+	      <%= link_to I18n.t('publicURL'), url, target: "_blank" %>
+	    <% end %>
+		<li>
+			<%= link_to I18n.t('report'), tourney_report_path(@tourney) %>
+		</li>
+	</ul>
 	<h1><%= t('tourney')%></h1>
 	<%= render 'tourneys/info' %>	
 	

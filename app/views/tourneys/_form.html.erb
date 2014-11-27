@@ -27,13 +27,5 @@
     <%= f.label :publicId %><br>
 	<%= f.text_field :publicId, class: "form-control" %>
   </div>
-  
-  <% unless @tourney.publicId.nil? %>
-  <div class="form-group">
-    <%= label_tag :url_tag, I18n.t('publicURL') %><br>
-    <%= text_field_tag :url, "http://xwingzgz-veladan.rhcloud.com/tourney/#{@tourney.publicId}", class: "form-control" %>
-  </div>
-  <% end %>  
-  
   <%= f.submit class: "btn btn-default" %>
 <% end %>

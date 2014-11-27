@@ -143,6 +143,7 @@ es:
   printP: "Pulsar aquí para iniciar impresión"
   publicURL: "URL pública para compartir con los jugadores"
   invalidPublicId: "El torneo indicado no existe"
+  editTourney: "Editar torneo"
   activerecord:
     models:
       match: "Mesa"

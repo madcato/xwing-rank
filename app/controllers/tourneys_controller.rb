@@ -43,7 +43,7 @@ class TourneysController < ApplicationController
   def update
     respond_to do |format|
       if @tourney.update(tourney_params)
-        format.html { redirect_to tourneys_url, notice: t('tourneyUpdated') }
+        format.html { redirect_to tourney_rounds_url(@tourney), notice: t('tourneyUpdated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
