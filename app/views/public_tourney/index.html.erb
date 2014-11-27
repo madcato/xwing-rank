@@ -4,7 +4,14 @@
   <h1><%= Tourney.human_attribute_name(:titulo) %>:
   <%= @tourney.titulo %></h1>
 </p>
+<ul class="nav nav-stacked">
+	<li><%= link_to I18n.t('ranking'), "#ranking" %><br /></li>
+	<% @tourney.rounds.each do |round| %>
+	<li><%= link_to I18n.t('Round') + ": " + round.order.to_s , "#round" + round.order.to_s %><br /></li>
+	<% end %>
+</ul>
 <% position = 0 %>
+<a name="ranking"></a>
 <h2><%= t('ranking')%></h2>
 <table class="table table-striped">
   <thead>
@@ -35,8 +42,8 @@
 <h2><%= t('rounds')%></h2>
 <% @tourney.rounds.each do |round| %>
 
+<a name="round<%= round.order %>"></a>
 <h3><strong><%= t('Round') %>: </strong><%= round.order %></h3>
-
 <table class="table table-striped">
   <thead>
     <tr>
