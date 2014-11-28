@@ -1,6 +1,15 @@
 <%= render partial: 'rounds/notice' %>
 <h1>X-Wing</h1>
 <h2><%= t('listingPlayers')%></h2>
+
+<%= form_tag({controller: "players", action: "list"}, method: :get) do %>
+  <div class="form-group">
+    <%= label_tag :city %><br>
+	<%= select_tag :city, options_for_select(collectCities, @selectedCity),{include_blank: '',class: "form-control"} %>
+  </div>
+  <%= submit_tag nil, class: "btn btn-default" %>
+<% end %>
+
 <% position = 1 %>
 <table class='table'>
   <thead>

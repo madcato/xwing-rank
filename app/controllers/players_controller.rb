@@ -14,7 +14,12 @@ class PlayersController < ApplicationController
 
   # GET /
   def list
-    @players = Player.all.order('ranking DESC')
+    if params[:city].nil?
+      @players = Player.all.order('ranking DESC')
+    else
+      @players = Player.where(city: params[:city]).order('ranking DESC')
+    end
+    @selectedCity = params[:city] unless params[:city].nil?
   end
 
   # GET /players/1
