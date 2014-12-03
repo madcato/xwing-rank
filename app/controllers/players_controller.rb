@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:list]
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   def simple
@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
 
   # GET /
   def list
-    if params[:city].nil?
+    if params[:city].nil? or params[:city] == ""
       @players = Player.all.order('ranking DESC')
     else
       @players = Player.where(city: params[:city]).order('ranking DESC')

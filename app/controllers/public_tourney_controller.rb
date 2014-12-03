@@ -1,7 +1,10 @@
 class PublicTourneyController < ApplicationController
   
   def index
-    @tourney = Tourney.find_by(:publicId => params[:publicId])
+    publicId = params[:publicId]
+    publicId = params[:publicId2] unless params[:publicId2].nil?
+    
+    @tourney = Tourney.find_by(:publicId => publicId)
 
     respond_to do |format|
       if @tourney

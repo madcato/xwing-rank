@@ -144,6 +144,10 @@ es:
   publicURL: "URL pública para compartir con los jugadores"
   invalidPublicId: "El torneo indicado no existe"
   editTourney: "Editar torneo"
+  publicId: "Identificador de torneo"
+  city: "Ciudad"
+  searchTourney: "Buscar torneo"
+  filter: "Filtrar"
   activerecord:
     models:
       match: "Mesa"
