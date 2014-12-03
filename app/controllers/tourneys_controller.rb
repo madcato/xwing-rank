@@ -5,7 +5,7 @@ class TourneysController < ApplicationController
   # GET /tourneys
   # GET /tourneys.json
   def index
-    @tourneys = current_user.tourneys
+    @tourneys = current_user.tourneys.order('playDate desc')
   end
 
   # GET /tourneys/1
