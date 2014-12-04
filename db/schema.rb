@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924080438) do
+ActiveRecord::Schema.define(version: 20141204075959) do
 
   create_table "admins", force: true do |t|
     t.string   "email"
@@ -49,18 +49,8 @@ ActiveRecord::Schema.define(version: 20140924080438) do
     t.datetime "updated_at"
   end
 
-  create_table "rankings", force: true do |t|
-    t.integer  "player_id"
-    t.integer  "points",          default: 0
-    t.integer  "breakpoints",     default: 0
-    t.integer  "sos",             default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "tourney_id"
-    t.boolean  "bye",             default: false
-    t.boolean  "dropped"
-    t.integer  "numberOfMatches", default: 0
-  end
+# Could not dump table "rankings" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "rounds", force: true do |t|
     t.integer  "order"
@@ -78,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140924080438) do
     t.date     "playDate"
     t.string   "publicId"
     t.integer  "seedType",   default: 1
+    t.integer  "mode",       default: 1
   end
 
   add_index "tourneys", ["publicId"], name: "index_tourneys_on_publicId", unique: true
