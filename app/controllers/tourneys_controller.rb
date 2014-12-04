@@ -83,6 +83,24 @@ class TourneysController < ApplicationController
     render :layout => 'printable'
   end
   
+  def elimination
+    @tourney = current_user.tourneys.find(params[:tourney_id])
+  end
+  
+  def startElimination
+    @tourney = current_user.tourneys.find(params[:tourney_id])
+    
+    respond_to do |format|
+      if params[:numberOfPlayersForTop].nil? or params[:numberOfPlayersForTop] == "" or params[:numberOfPlayersForTop].to_i <= 0
+        format.html { redirect_to tourney_elimination_url(@tourney), alert: t('numberOfPlayersNeeded') }
+      else
+        numberOfPLayers = params[:numberOfPlayersForTop].to_i
+        @tourney.startEliminationRounds(numberOfPLayers)
+        format.html { redirect_to tourney_rounds_url(@tourney), notice: t('tourneyUpdated') }
+      end
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tourney

@@ -68,6 +68,25 @@ class Tourney < ActiveRecord::Base
     return sos
   end
   
+  
+  def startEliminationRounds(numberOfPLayers)
+    return if self.mode == 2 # Tourney already in Elimination mode
+    
+    self.mode = 2
+    self.save
+    
+    self.rankings.each { |ranking|
+      ranking.eliminated = true
+    }
+    
+    i = 0
+    while i < numberOfPlayers
+      self.rankings[i].eliminated = false
+      i += 1
+    end
+    
+    self.rankings.save
+  end
 private 
   def initPublicId
     o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten

@@ -148,6 +148,10 @@ es:
   city: "Ciudad"
   searchTourney: "Buscar torneo"
   filter: "Filtrar"
+  startElimination: "Iniciar fase eliminatoria"
+  numberOfPlayersForTop: "Número de jugadores que pasan a la fase de eliminatorias"
+  numberOfPlayersNeeded: "Debe introducir un número de jugadores"
+  modeEliminationActivated: "Torneo en modo eliminatorias"
   activerecord:
     models:
       match: "Mesa"

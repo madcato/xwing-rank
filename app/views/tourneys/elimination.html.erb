@@ -1,0 +1,16 @@
+<div class='tourney-tab'>
+	<h1><%= t('tourney')%></h1>
+	<%= render 'tourneys/info' %>	
+</div>
+<%= render partial: 'rounds/notice' %>
+<div class="tab-content">
+	<%= form_tag({controller: :tourneys, action: :startElimination}, method: :post) do %>
+	  <div class="form-group">
+	    <%= label_tag I18n.t(:numberOfPlayersForTop) %><br>
+		<%= text_field_tag :numberOfPlayersForTop, nil, class: "form-control" %>
+	  </div>
+	  <%= submit_tag nil, class: "btn btn-default" %>
+	<% end %>
+</div>
+
+

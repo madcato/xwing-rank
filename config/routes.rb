@@ -18,6 +18,8 @@ XwingRank::Application.routes.draw do
     get 'printRanking/' => 'tourneys#printRanking'
     post 'createInscription/' => 'rounds#createInscription'
     post 'createAndSeedRound/' => 'rounds#createAndSeedRound'
+    get 'elimination/' => 'tourneys#elimination'
+    post 'startElimination/' => 'tourneys#startElimination'
     resources :rounds do
       get 'seedRound/' => 'rounds#seedRound'
       get 'printRound/' => 'rounds#printRound'
