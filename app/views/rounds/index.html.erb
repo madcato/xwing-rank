@@ -12,14 +12,7 @@
 		<li>
 			<%= link_to I18n.t('report'), tourney_report_path(@tourney) %>
 		</li>
-		<li>
-			<% if @tourney.mode == 1 %>
-			<%= link_to I18n.t('startElimination'), tourney_elimination_path(@tourney) %>
-			<% end %>
-			<% if @tourney.mode == 2 %>
-			<%= I18n.t(:modeEliminationActivated) %>
-			<% end %>
-		</li>
+		
 	</ul>
 	<h1><%= t('tourney')%></h1>
 	<%= render 'tourneys/info' %>	
