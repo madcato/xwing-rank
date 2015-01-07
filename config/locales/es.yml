@@ -152,6 +152,7 @@ es:
   numberOfPlayersForTop: "Número de jugadores que pasan a la fase de eliminatorias"
   numberOfPlayersNeeded: "Debe introducir un número de jugadores"
   modeEliminationActivated: "Torneo en modo eliminatorias"
+  playerAlreadyInscribed: "El jugador ya fue inscrito anteriormente."
   activerecord:
     models:
       match: "Mesa"

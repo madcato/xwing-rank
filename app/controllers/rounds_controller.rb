@@ -129,18 +129,26 @@ class RoundsController < ApplicationController
   
   def createInscription
     setActiveTab(:inscribed)
-    player = Player.find(params[:player][:id])
-    @tourney.players << player
+    inscribedplayerexists = @tourney.players.exists?(id: params[:player][:id])
+    
+    if !inscribedplayerexists
+      player = Player.find(params[:player][:id])
+      @tourney.players << player
   
-    @tourney.addPlayerToRanking(player,params[:inscription][:bye])
-
+      @tourney.addPlayerToRanking(player,params[:inscription][:bye])
+    end
+    
     respond_to do |format|
-      if @tourney.save
-        format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerInscribed') }
-        format.json { render action: I18n.t('show'), status: :created, location: @tourney }
+      if !inscribedplayerexists
+        if @tourney.save
+          format.html { redirect_to tourney_rounds_path(@tourney), notice: t('playerInscribed') }
+          format.json { render action: I18n.t('show'), status: :created, location: @tourney }
+        else
+          format.html { render action: 'newPlayer' }
+          format.json { render json: @round.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: 'newPlayer' }
-        format.json { render json: @round.errors, status: :unprocessable_entity }
+        format.html { redirect_to tourney_rounds_path(@tourney), alert: t('playerAlreadyInscribed') }
       end
     end
   end
