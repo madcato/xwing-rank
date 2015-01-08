@@ -184,6 +184,7 @@ es:
         titulo: "Torneo"
         playDate: "Fecha del realización"
         seedType: "Tipo de emparejamiento"
+        publicId: "Identificador de torneo"
   date:
     abbr_day_names:
     - dom
