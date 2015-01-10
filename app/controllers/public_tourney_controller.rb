@@ -15,4 +15,7 @@ class PublicTourneyController < ApplicationController
     end
   end
   
+  def faq
+  end
+  
 end

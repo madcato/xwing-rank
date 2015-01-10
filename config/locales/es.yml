@@ -153,6 +153,7 @@ es:
   numberOfPlayersNeeded: "Debe introducir un número de jugadores"
   modeEliminationActivated: "Torneo en modo eliminatorias"
   playerAlreadyInscribed: "El jugador ya fue inscrito anteriormente."
+  About: Acerca
   activerecord:
     models:
       match: "Mesa"

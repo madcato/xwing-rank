@@ -2,8 +2,8 @@ XwingRank::Application.routes.draw do
   
   resources :rankings
 
-  resources :players_tourneys
-
+  get 'faq' => 'public_tourney#faq'
+  
   devise_for :users
   devise_for :admins
   
