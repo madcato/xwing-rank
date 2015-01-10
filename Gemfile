@@ -48,3 +48,4 @@ gem 'rails_admin'
 gem 'simple_form'
 gem 'devise' # Authentication
 gem "cancan" # Authorization
+gem 'devise-i18n'
