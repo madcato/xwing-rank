@@ -84,7 +84,7 @@ XwingRank::Application.configure do
   config.action_mailer.asset_host = 'http://www.xwingrankor.com' 
   config.action_mailer.delivery_method = :smtp 
   config.action_mailer.smtp_settings = { address: 'smtp.gmail.com', 
-    port: 587, user_name: 'veladan@gmail.com', password: 'C4nd3r3l', 
+    port: "587", user_name: 'veladan@gmail.com', password: 'none', 
     authentication: 'plain', 
     enable_starttls_auto: true }
 end
