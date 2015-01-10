@@ -22,7 +22,7 @@
 <body>
 	
     <div class="container">
-		<%= link_to_function(I18n.t("printP"), "javascript:print()") %>
+		<%= link_to I18n.t("printP"), nil, :onclick => "print()" %>
 			<%= yield %>
     </div><!-- /.container -->
   </body>
