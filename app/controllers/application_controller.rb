@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   before_filter :checkActiveTab
   
+  http_basic_authenticate_with name: "dhh", password: "secret"
+  
 protected
   def setActiveTab(tab)
     session[:activeTab] = tab
