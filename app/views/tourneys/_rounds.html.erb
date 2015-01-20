@@ -6,6 +6,15 @@
 		        <li class="<%= checkRound(round)%>"><%= link_to I18n.t('round') + " " + round.order.to_s, tourney_round_matches_path(@tourney, round) %></li>
 		    <% end %>
 				<li><%= link_to t('newRound'), tourney_createAndSeedRound_path(@tourney), method: :post %></li>
+				<li>
+					<% if @tourney.mode == 1 %>
+						<%= link_to I18n.t('startElimination'), tourney_elimination_path(@tourney) %>
+					<% end %>
+					<% if @tourney.mode == 2 %>
+						<%= I18n.t(:modeEliminationActivated) %>
+					<% end %>
+				</li>
+				
 		</ul>
   </div>
   <div class="col-md-10">

@@ -96,6 +96,7 @@ class TourneysController < ApplicationController
       else
         numberOfPLayers = params[:numberOfPlayersForTop].to_i
         @tourney.startEliminationRounds(numberOfPLayers)
+         # TODO Create new round
         format.html { redirect_to tourney_rounds_url(@tourney), notice: t('tourneyUpdated') }
       end
     end

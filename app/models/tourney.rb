@@ -69,7 +69,7 @@ class Tourney < ActiveRecord::Base
   end
   
   
-  def startEliminationRounds(numberOfPLayers)
+  def startEliminationRounds(numberOfPlayers)
     return if self.mode == 2 # Tourney already in Elimination mode
     
     self.mode = 2
@@ -87,6 +87,7 @@ class Tourney < ActiveRecord::Base
     
     self.rankings.save
   end
+  
 private 
   def initPublicId
     o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
