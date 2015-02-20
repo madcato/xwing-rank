@@ -90,14 +90,24 @@ class TourneysController < ApplicationController
   def startElimination
     @tourney = current_user.tourneys.find(params[:tourney_id])
     
+    # check last round is filled completely
+    @lastRound = @tourney.lastRound
+    if !@lastRound.nil? and !@lastRound.allMatchesFilled?
+      respond_to do |format|
+        format.html { redirect_to :back, alert: t('lastRoundNotFinished') }
+        format.json { render json: @round.errors, status: :unprocessable_entity }
+      end
+      return
+    end
+    
     respond_to do |format|
       if params[:numberOfPlayersForTop].nil? or params[:numberOfPlayersForTop] == "" or params[:numberOfPlayersForTop].to_i <= 0
         format.html { redirect_to tourney_elimination_url(@tourney), alert: t('numberOfPlayersNeeded') }
       else
-        numberOfPLayers = params[:numberOfPlayersForTop].to_i
-        @tourney.startEliminationRounds(numberOfPLayers)
-         # TODO Create new round
-        format.html { redirect_to tourney_rounds_url(@tourney), notice: t('tourneyUpdated') }
+        numberOfPlayers = params[:numberOfPlayersForTop].to_i
+        @tourney.startEliminationRounds(numberOfPlayers)
+         # Create new round
+        format.html { redirect_to tourney_createAndSeedRound_url(@tourney), notice: t('tourneyUpdated') }
       end
     end
   end

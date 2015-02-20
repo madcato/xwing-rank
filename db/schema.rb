@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20150110094151) do
 
-  create_table "admins", force: true do |t|
-    t.string   "email"
-    t.string   "encrypted_password"
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",              limit: 255
+    t.string   "encrypted_password", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "matches", force: true do |t|
+  create_table "matches", force: :cascade do |t|
     t.integer  "player1_id"
     t.integer  "player2_id"
     t.integer  "round_id"
@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(version: 20150110094151) do
     t.integer  "points2"
   end
 
-  create_table "players", force: true do |t|
-    t.string   "firstName"
-    t.string   "uniqueid"
+  create_table "players", force: :cascade do |t|
+    t.string   "firstName",       limit: 255
+    t.string   "uniqueid",        limit: 255
     t.integer  "numberOfMatches"
     t.integer  "ranking"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.string   "city"
-    t.string   "lastName"
+    t.string   "email",           limit: 255
+    t.string   "city",            limit: 255
+    t.string   "lastName",        limit: 255
   end
 
-  create_table "players_tourneys", force: true do |t|
+  create_table "players_tourneys", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "tourney_id"
     t.datetime "created_at"
@@ -52,38 +52,38 @@ ActiveRecord::Schema.define(version: 20150110094151) do
 # Could not dump table "rankings" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
-  create_table "rounds", force: true do |t|
+  create_table "rounds", force: :cascade do |t|
     t.integer  "order"
     t.integer  "tourney_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tourneys", force: true do |t|
+  create_table "tourneys", force: :cascade do |t|
     t.integer  "state"
-    t.string   "titulo"
+    t.string   "titulo",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.date     "playDate"
-    t.string   "publicId"
-    t.integer  "seedType",   default: 1
-    t.integer  "mode",       default: 1
+    t.string   "publicId",   limit: 255
+    t.integer  "seedType",               default: 1
+    t.integer  "mode",                   default: 1
   end
 
   add_index "tourneys", ["publicId"], name: "index_tourneys_on_publicId", unique: true
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "confirmation_token"

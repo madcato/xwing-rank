@@ -1,4 +1,8 @@
 class Tourney < ActiveRecord::Base
+  
+  SWISS_MODE = 1
+  ELIMINATION_MODE = 2
+  
 	has_many :rounds, :dependent => :delete_all
   has_and_belongs_to_many :players
   belongs_to :user
@@ -70,22 +74,26 @@ class Tourney < ActiveRecord::Base
   
   
   def startEliminationRounds(numberOfPlayers)
-    return if self.mode == 2 # Tourney already in Elimination mode
+    return if self.mode == ELIMINATION_MODE # Tourney already in Elimination mode
     
-    self.mode = 2
+    self.mode = ELIMINATION_MODE
     self.save
     
     self.rankings.each { |ranking|
       ranking.eliminated = true
+      ranking.save
     }
     
     i = 0
     while i < numberOfPlayers
       self.rankings[i].eliminated = false
+      self.rankings[i].save
       i += 1
     end
-    
-    self.rankings.save
+  end
+  
+  def isSwissModeActivated
+    return self.mode == SWISS_MODE
   end
   
 private 

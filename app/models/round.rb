@@ -96,6 +96,14 @@ class Round < ActiveRecord::Base
   end
   
   def seedNormalRound
+    if self.tourney.isSwissModeActivated
+      seedSwissNormalRound
+    else
+      seedEliminationNormalRound
+    end
+  end
+  
+  def seedSwissNormalRound
     # Create pairings using one by one method
     players = self.tourney.rankings.map(&:player).to_a
     
@@ -119,6 +127,35 @@ class Round < ActiveRecord::Base
       if tempPlayers.count != 0 
         players = tempPlayers + players
       end
+      match = Match.new
+      match.player1 = player1
+      match.player2 = player2
+      match.round = self
+      match.save
+    end
+  end
+  
+  def seedEliminationNormalRound
+    # Create pairings using one by one method
+    players = self.tourney.rankings.map(&:player).to_a
+
+    for index in 0..self.tourney.rankings.count-1
+      ranking = self.tourney.rankings[index]
+      # Remove dropped players
+      if ranking.dropped
+        players.delete(ranking.player)
+      end
+      
+      # Remove eliminated players
+      if ranking.eliminated
+        players.delete(ranking.player)
+      end
+    end
+
+    # Emparejar primero con ultimo y repetir
+    until players.empty?
+      player1 = players.shift
+      player2 = players.pop
       match = Match.new
       match.player1 = player1
       match.player2 = player2
